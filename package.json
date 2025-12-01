@@ -1,0 +1,24 @@
+{
+  "name": "playace-website-monitor",
+  "version": "1.0.0",
+  "description": "自動監控 PlayAce 遊戲網站圖片資源，發現 404 錯誤時發送 Telegram 通知",
+  "main": "monitor.js",
+  "scripts": {
+    "start": "node monitor.js",
+    "test": "node monitor.js --test"
+  },
+  "keywords": [
+    "monitor",
+    "puppeteer",
+    "telegram",
+    "website"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.0.0",
+    "node-cron": "^3.0.3",
+    "dotenv": "^16.3.1",
+    "node-telegram-bot-api": "^0.64.0"
+  }
+}

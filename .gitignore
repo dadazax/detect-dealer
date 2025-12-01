@@ -1,0 +1,16 @@
+# 依賴
+node_modules/
+
+# 環境變數
+.env
+
+# 日誌
+*.log
+logs/
+
+# 系統文件
+.DS_Store
+Thumbs.db
+
+# PM2
+.pm2/
