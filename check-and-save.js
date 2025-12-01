@@ -1,0 +1,212 @@
+require('dotenv').config();
+const puppeteer = require('puppeteer');
+const TelegramBot = require('node-telegram-bot-api');
+const fs = require('fs');
+const path = require('path');
+
+// 配置
+const CONFIG = {
+  url: process.env.MONITOR_URL,
+  telegramToken: process.env.TELEGRAM_BOT_TOKEN,
+  telegramChatId: process.env.TELEGRAM_CHAT_ID,
+  headless: process.env.HEADLESS !== 'false',
+};
+
+const bot = new TelegramBot(CONFIG.telegramToken, { polling: false });
+
+// 點擊座標
+const CLICK_POSITIONS = [
+  { name: '歐廳', x: 189, y: 218 },
+  { name: '百家樂', x: 265, y: 218 },
+  { name: '競速', x: 341, y: 218 },
+  { name: '龍虎', x: 416, y: 218 },
+  { name: '21點', x: 492, y: 218 },
+  { name: '歐利廳', x: 33, y: 360 },
+];
+
+async function clickCanvas(page, x, y) {
+  await page.evaluate((x, y) => {
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+      const event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: x,
+        clientY: y,
+      });
+      canvas.dispatchEvent(event);
+    }
+  }, x, y);
+}
+
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+async function sendTelegramMessage(message) {
+  try {
+    await bot.sendMessage(CONFIG.telegramChatId, message, {
+      parse_mode: 'Markdown',
+    });
+    console.log('✅ Telegram 訊息已發送');
+  } catch (error) {
+    console.error('❌ 發送 Telegram 訊息失敗:', error.message);
+  }
+}
+
+function saveResults(data) {
+  const dataDir = path.join(__dirname, 'docs', 'data');
+  if (!fs.existsSync(dataDir)) {
+    fs.mkdirSync(dataDir, { recursive: true });
+  }
+
+  // 保存最新結果
+  const latestFile = path.join(dataDir, 'latest.json');
+  fs.writeFileSync(latestFile, JSON.stringify(data, null, 2));
+
+  // 保存歷史記錄
+  const historyFile = path.join(dataDir, 'history.json');
+  let history = { checks: [] };
+
+  if (fs.existsSync(historyFile)) {
+    try {
+      history = JSON.parse(fs.readFileSync(historyFile, 'utf8'));
+    } catch (error) {
+      console.error('讀取歷史記錄失敗:', error.message);
+    }
+  }
+
+  history.checks.unshift(data);
+
+  // 只保留最近 100 條記錄
+  if (history.checks.length > 100) {
+    history.checks = history.checks.slice(0, 100);
+  }
+
+  fs.writeFileSync(historyFile, JSON.stringify(history, null, 2));
+  console.log('✅ 結果已保存');
+}
+
+async function checkWebsite() {
+  console.log(`\n${'='.repeat(60)}`);
+  console.log(`🔍 開始檢查網站: ${new Date().toLocaleString('zh-TW')}`);
+  console.log('='.repeat(60));
+
+  const browser = await puppeteer.launch({
+    headless: CONFIG.headless,
+    args: [
+      '--no-sandbox',
+      '--disable-setuid-sandbox',
+      '--disable-dev-shm-usage',
+    ],
+  });
+
+  const page = await browser.newPage();
+  const failed404Images = new Map();
+
+  page.on('response', async (response) => {
+    const url = response.url();
+    const status = response.status();
+    const resourceType = response.request().resourceType();
+
+    if (resourceType === 'image' && status === 404) {
+      const fileName = url.split('/').pop();
+      if (!failed404Images.has(url)) {
+        failed404Images.set(url, {
+          url,
+          fileName,
+          status,
+        });
+        console.log(`❌ 發現 404 圖片: ${fileName}`);
+      }
+    }
+  });
+
+  try {
+    console.log('📡 正在訪問網站...');
+    await page.goto(CONFIG.url, {
+      waitUntil: 'networkidle2',
+      timeout: 60000,
+    });
+
+    console.log('⏳ 等待初始資源加載...');
+    await delay(5000);
+
+    console.log('🖱️ 開始點擊各個標籤觸發懶加載...');
+    for (const position of CLICK_POSITIONS) {
+      console.log(`  ➤ 點擊: ${position.name}`);
+      await clickCanvas(page, position.x, position.y);
+      await delay(2000);
+    }
+
+    console.log('⏳ 等待所有資源加載完成...');
+    await delay(3000);
+
+    const errorCount = failed404Images.size;
+    const errors = Array.from(failed404Images.values());
+
+    console.log(`\n📊 檢查完成！`);
+    console.log(`總共發現 ${errorCount} 個 404 錯誤的圖片`);
+
+    // 準備結果數據
+    const resultData = {
+      timestamp: new Date().toISOString(),
+      errorCount: errorCount,
+      errors: errors,
+      success: errorCount === 0,
+      url: CONFIG.url,
+    };
+
+    // 保存結果
+    saveResults(resultData);
+
+    // 發送 Telegram 通知
+    if (errorCount > 0) {
+      let message = `🚨 *網站圖片 404 錯誤警報*\n\n`;
+      message += `🌐 網站: PlayAce 遊戲平台\n`;
+      message += `⏰ 時間: ${new Date().toLocaleString('zh-TW')}\n`;
+      message += `❌ 發現 ${errorCount} 個圖片無法加載\n\n`;
+      message += `📋 *錯誤清單:*\n`;
+
+      errors.forEach((error, index) => {
+        message += `\n${index + 1}. \`${error.fileName}\`\n`;
+        message += `   URL: ${error.url}\n`;
+      });
+
+      await sendTelegramMessage(message);
+      console.log(`\n🔔 已發送 Telegram 通知`);
+    } else {
+      console.log('✅ 所有圖片資源正常！');
+    }
+
+  } catch (error) {
+    console.error('❌ 檢查過程發生錯誤:', error.message);
+
+    const errorData = {
+      timestamp: new Date().toISOString(),
+      errorCount: -1,
+      errors: [],
+      success: false,
+      error: error.message,
+      url: CONFIG.url,
+    };
+
+    saveResults(errorData);
+
+    const errorMessage = `⚠️ *監控系統錯誤*\n\n` +
+      `時間: ${new Date().toLocaleString('zh-TW')}\n` +
+      `錯誤: ${error.message}`;
+
+    await sendTelegramMessage(errorMessage);
+  } finally {
+    await browser.close();
+    console.log('🔒 瀏覽器已關閉\n');
+  }
+}
+
+checkWebsite().then(() => {
+  console.log('✅ 檢查完成！');
+  process.exit(0);
+}).catch(err => {
+  console.error('❌ 檢查失敗:', err);
+  process.exit(1);
+});
