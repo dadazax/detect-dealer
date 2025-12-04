@@ -105,6 +105,7 @@ async function checkWebsite() {
   const successImages = new Map();
   const allImages = new Map();
 
+  // 設置監聽器在導航之前，確保捕獲所有請求
   page.on('response', async (response) => {
     const url = response.url();
     const status = response.status();
@@ -145,17 +146,20 @@ async function checkWebsite() {
     });
 
     console.log('⏳ 等待初始資源加載...');
-    await delay(5000);
+    await delay(10000);  // 增加到 10 秒
 
     console.log('🖱️ 開始點擊各個標籤觸發懶加載...');
     for (const position of CLICK_POSITIONS) {
       console.log(`  ➤ 點擊: ${position.name}`);
       await clickCanvas(page, position.x, position.y);
-      await delay(2000);
+      await delay(3000);  // 增加到 3 秒
     }
 
     console.log('⏳ 等待所有資源加載完成...');
-    await delay(3000);
+    await delay(5000);  // 增加到 5 秒
+
+    console.log('⏳ 最後確認所有資源...');
+    await delay(3000);  // 再等 3 秒
 
     const errorCount = failed404Images.size;
     const successCount = successImages.size;

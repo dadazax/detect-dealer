@@ -276,6 +276,29 @@
         .collapse-btn:hover {
             background: #e5e7eb;
         }
+
+        .manual-check-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            margin-left: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+        }
+
+        .manual-check-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .manual-check-btn:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -283,7 +306,12 @@
         <div class="header">
             <h1>🎮 PlayAce 網站監控系統</h1>
             <p>由 GitHub Actions 自動監控，每 30 分鐘更新一次</p>
-            <span class="badge auto">🤖 自動化監控</span>
+            <div style="margin-top: 15px;">
+                <span class="badge auto">🤖 自動化監控</span>
+                <button class="manual-check-btn" onclick="triggerManualCheck()">
+                    🔍 立即檢查
+                </button>
+            </div>
         </div>
 
         <div class="stats-grid">
@@ -438,6 +466,19 @@
             if (element) {
                 element.style.display = element.style.display === 'none' ? 'grid' : 'none';
             }
+        }
+
+        function triggerManualCheck() {
+            // 跳轉到 GitHub Actions 頁面，用戶可以手動觸發 workflow
+            const actionsUrl = 'https://github.com/dadazax/detect-dealer/actions/workflows/monitor.yml';
+            window.open(actionsUrl, '_blank');
+
+            alert('✅ 即將打開 GitHub Actions 頁面\n\n' +
+                  '請點擊右側的 "Run workflow" 按鈕，\n' +
+                  '然後選擇 "main" 分支，\n' +
+                  '最後點擊綠色的 "Run workflow" 按鈕。\n\n' +
+                  '檢查完成後（約 2-3 分鐘），\n' +
+                  '刷新本頁面即可看到最新結果！');
         }
 
         async function loadData() {
