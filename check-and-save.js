@@ -102,21 +102,37 @@ async function checkWebsite() {
 
   const page = await browser.newPage();
   const failed404Images = new Map();
+  const successImages = new Map();
+  const allImages = new Map();
 
   page.on('response', async (response) => {
     const url = response.url();
     const status = response.status();
     const resourceType = response.request().resourceType();
 
-    if (resourceType === 'image' && status === 404) {
+    if (resourceType === 'image') {
       const fileName = url.split('/').pop();
-      if (!failed404Images.has(url)) {
-        failed404Images.set(url, {
-          url,
-          fileName,
-          status,
-        });
-        console.log(`❌ 發現 404 圖片: ${fileName}`);
+      const imageInfo = {
+        url,
+        fileName,
+        status,
+      };
+
+      // 記錄所有圖片
+      if (!allImages.has(url)) {
+        allImages.set(url, imageInfo);
+      }
+
+      if (status === 404) {
+        if (!failed404Images.has(url)) {
+          failed404Images.set(url, imageInfo);
+          console.log(`❌ 發現 404 圖片: ${fileName}`);
+        }
+      } else if (status === 200) {
+        if (!successImages.has(url)) {
+          successImages.set(url, imageInfo);
+          console.log(`✅ 正常圖片: ${fileName}`);
+        }
       }
     }
   });
@@ -142,15 +158,23 @@ async function checkWebsite() {
     await delay(3000);
 
     const errorCount = failed404Images.size;
+    const successCount = successImages.size;
+    const totalCount = allImages.size;
     const errors = Array.from(failed404Images.values());
+    const successList = Array.from(successImages.values());
 
     console.log(`\n📊 檢查完成！`);
-    console.log(`總共發現 ${errorCount} 個 404 錯誤的圖片`);
+    console.log(`總共檢查 ${totalCount} 個圖片`);
+    console.log(`✅ 正常: ${successCount} 個`);
+    console.log(`❌ 錯誤: ${errorCount} 個`);
 
     // 準備結果數據
     const resultData = {
       timestamp: new Date().toISOString(),
+      totalCount: totalCount,
+      successCount: successCount,
       errorCount: errorCount,
+      successImages: successList,
       errors: errors,
       success: errorCount === 0,
       url: CONFIG.url,
@@ -183,7 +207,10 @@ async function checkWebsite() {
 
     const errorData = {
       timestamp: new Date().toISOString(),
+      totalCount: 0,
+      successCount: 0,
       errorCount: -1,
+      successImages: [],
       errors: [],
       success: false,
       error: error.message,
