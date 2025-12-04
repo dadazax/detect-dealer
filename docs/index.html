@@ -806,8 +806,6 @@
                 const historyResponse = await fetch('data/history.json?' + Date.now());
                 const history = await historyResponse.json();
 
-                document.getElementById('totalChecks').textContent = history.checks.length;
-
                 // 顯示歷史記錄
                 const container = document.getElementById('historyContainer');
                 const recentChecks = history.checks.slice(0, 20);
