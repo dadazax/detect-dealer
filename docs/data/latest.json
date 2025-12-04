@@ -1,17 +1,17 @@
 {
-  "timestamp": "2025-12-04T10:15:09.628Z",
+  "timestamp": "2025-12-04T10:25:41.263Z",
   "totalCount": 2,
   "successCount": 2,
   "errorCount": 0,
   "successImages": [
     {
-      "url": "http://uat.playacestaging.com:81/playace_10.png",
-      "fileName": "playace_10.png",
+      "url": "http://uat.playacestaging.com:81/bg.jpg",
+      "fileName": "bg.jpg",
       "status": 200
     },
     {
-      "url": "http://uat.playacestaging.com:81/bg.jpg",
-      "fileName": "bg.jpg",
+      "url": "http://uat.playacestaging.com:81/playace_10.png",
+      "fileName": "playace_10.png",
       "status": 200
     }
   ],
