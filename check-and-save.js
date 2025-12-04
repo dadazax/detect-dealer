@@ -97,10 +97,30 @@ async function checkWebsite() {
       '--no-sandbox',
       '--disable-setuid-sandbox',
       '--disable-dev-shm-usage',
+      '--disable-blink-features=AutomationControlled', // 防止被檢測為自動化
+      '--disable-features=IsolateOrigins,site-per-process',
+      '--disable-web-security', // 允許跨域（僅用於監控）
+      '--enable-webgl', // 啟用 WebGL
+      '--use-gl=swiftshader', // 使用軟體 GPU 模擬
+      '--enable-accelerated-2d-canvas', // 啟用 Canvas 加速
+      '--disable-gpu-sandbox', // 禁用 GPU 沙盒限制
+      '--window-size=1920,1080', // 設置視窗大小
     ],
   });
 
   const page = await browser.newPage();
+
+  // 設置視窗大小和 User Agent 讓瀏覽器看起來更真實
+  await page.setViewport({ width: 1920, height: 1080 });
+  await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36');
+
+  // 隱藏 webdriver 標誌
+  await page.evaluateOnNewDocument(() => {
+    Object.defineProperty(navigator, 'webdriver', {
+      get: () => false,
+    });
+  });
+
   const failed404Images = new Map();
   const successImages = new Map();
   const allImages = new Map();
