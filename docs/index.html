@@ -750,7 +750,7 @@
 
         async function monitorProgressViaWorker(workerUrl, runId) {
             let progress = 40;
-            const maxAttempts = 120; // 最多等待 4 分鐘
+            const maxAttempts = 240; // 最多等待 8 分鐘
 
             for (let i = 0; i < maxAttempts; i++) {
                 const response = await fetch(`${workerUrl}/status/${runId}`);
