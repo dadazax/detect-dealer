@@ -1,16 +1,12 @@
 name: Website Monitor
 
 on:
-  # 定時執行 - 每 30 分鐘
+  # 定時執行 - 每天兩次（台灣時間 9:00 和 21:00，UTC 1:00 和 13:00）
   schedule:
-    - cron: '*/30 * * * *'
+    - cron: '0 1,13 * * *'
 
   # 允許手動觸發
   workflow_dispatch:
-
-  # 每次推送時也執行（測試用）
-  push:
-    branches: [ main ]
 
 jobs:
   monitor:
