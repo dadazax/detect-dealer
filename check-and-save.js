@@ -146,21 +146,16 @@ async function checkWebsite() {
       timeout: 60000,
     });
 
-    console.log('⏳ 等待初始資源加載...');
-    await delay(10000);  // 增加到 10 秒
+    console.log('⏳ 等待遊戲完全加載（這需要較長時間）...');
+    await delay(150000);  // 等待 2.5 分鐘讓遊戲完全加載
 
-    console.log('🖱️ 開始點擊各個標籤觸發懶加載...');
-    for (const position of CLICK_POSITIONS) {
-      console.log(`  ➤ 點擊: ${position.name}`);
-      await clickCanvas(page, position.x, position.y);
-      await delay(3000);  // 增加到 3 秒
-    }
+    console.log('✅ 遊戲應該已加載完成，正在收集圖片資源...');
 
-    console.log('⏳ 等待所有資源加載完成...');
-    await delay(5000);  // 增加到 5 秒
+    // 遊戲加載完成後，荷官圖片已經顯示，不需要點擊
+    // 點擊操作已移除，因為它們在遊戲未加載時無效
 
-    console.log('⏳ 最後確認所有資源...');
-    await delay(3000);  // 再等 3 秒
+    console.log('⏳ 最後確認所有資源已捕獲...');
+    await delay(10000);  // 再等 10 秒確保所有請求完成
 
     const errorCount = failed404Images.size;
     const successCount = successImages.size;
