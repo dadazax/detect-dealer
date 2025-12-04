@@ -129,10 +129,11 @@ async function checkWebsite() {
           failed404Images.set(url, imageInfo);
           console.log(`❌ 發現 404 圖片: ${fileName}`);
         }
-      } else if (status === 200) {
+      } else if (status === 200 || status === 304) {
+        // 200: 正常加載, 304: 從緩存加載（也是正常的）
         if (!successImages.has(url)) {
           successImages.set(url, imageInfo);
-          console.log(`✅ 正常圖片: ${fileName}`);
+          console.log(`✅ 正常圖片: ${fileName} (HTTP ${status})`);
         }
       }
     }
