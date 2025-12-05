@@ -18,11 +18,39 @@ const CLICK_POSITIONS = [
 
 // 點擊 Canvas 上的座標 - 使用完整的滑鼠事件序列
 async function clickCanvas(page, x, y) {
-  // 方法 1：使用 Puppeteer 的原生點擊（推薦）
+  // 使用 Puppeteer 的原生點擊
   await page.mouse.click(x, y);
 
   // 短暫延遲讓事件處理
   await new Promise(resolve => setTimeout(resolve, 500));
+}
+
+// 滾動頁面以觸發 Lazy Loading
+async function scrollToLoadImages(page) {
+  console.log('   📜 開始滾動頁面加載隱藏的圖片...');
+
+  // 獲取頁面高度並分段滾動
+  await page.evaluate(async () => {
+    // 滾動到頁面最底部，慢慢滾動以觸發 lazy loading
+    const scrollHeight = document.body.scrollHeight;
+    const viewportHeight = window.innerHeight;
+    const scrollSteps = Math.ceil(scrollHeight / (viewportHeight / 2)); // 每次滾動半個視窗
+
+    for (let i = 0; i < scrollSteps; i++) {
+      window.scrollTo(0, (viewportHeight / 2) * i);
+      await new Promise(resolve => setTimeout(resolve, 500)); // 每次滾動後等待 500ms
+    }
+
+    // 滾動到最底部
+    window.scrollTo(0, scrollHeight);
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    // 滾動回頂部
+    window.scrollTo(0, 0);
+    await new Promise(resolve => setTimeout(resolve, 500));
+  });
+
+  console.log('   ✅ 滾動完成');
 }
 
 function saveResults(data) {
@@ -168,6 +196,12 @@ async function runCheck() {
     console.log('⏳ 等待初始頁面加載（1 分鐘）...');
     await delay(60000);  // 等待初始頁面完全加載
 
+    // 先滾動一次初始頁面（卡卡灣廳 - 預設廳別）
+    console.log('\n📜 滾動初始頁面（卡卡灣廳）...');
+    await scrollToLoadImages(page);
+    console.log(`   當前已收集 ${allImages.size} 張 JPG 圖片`);
+    await delay(5000);  // 等待圖片加載
+
     if (CLICK_POSITIONS.length > 0) {
       console.log('\n🎯 開始點擊不同的廳，收集所有圖片...\n');
 
@@ -177,9 +211,16 @@ async function runCheck() {
 
         await clickCanvas(page, position.x, position.y);
 
-        // 等待該分類的圖片加載
-        console.log(`⏳ 等待 ${position.name} 的圖片加載...`);
-        await delay(20000);  // 每個分類等待 20 秒
+        // 等待該分類的圖片開始加載
+        console.log(`⏳ 等待 ${position.name} 的頁面載入...`);
+        await delay(3000);  // 等待頁面切換
+
+        // 滾動頁面以加載所有圖片
+        await scrollToLoadImages(page);
+
+        // 再等待一下讓圖片加載完成
+        console.log(`   ⏳ 等待圖片完全加載...`);
+        await delay(10000);
 
         console.log(`✅ ${position.name} 完成，當前已收集 ${allImages.size} 張 JPG 圖片\n`);
       }
