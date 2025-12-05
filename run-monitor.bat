@@ -8,8 +8,26 @@ echo.
 
 cd /d "%~dp0"
 
-REM 運行檢測
-node run-and-push.js
+REM 檢查 Git 是否在 PATH 中
+where git >nul 2>nul
+if %ERRORLEVEL% NEQ 0 (
+    echo ⚠️  警告：Git 未找到，嘗試使用 Git Bash...
+
+    REM 嘗試常見的 Git Bash 路徑
+    if exist "C:\Program Files\Git\bin\bash.exe" (
+        "C:\Program Files\Git\bin\bash.exe" -c "cd '%CD%' && node run-and-push.js"
+    ) else if exist "C:\Program Files (x86)\Git\bin\bash.exe" (
+        "C:\Program Files (x86)\Git\bin\bash.exe" -c "cd '%CD%' && node run-and-push.js"
+    ) else (
+        echo ❌ 錯誤：找不到 Git 或 Git Bash
+        echo 請手動在 Git Bash 中運行: node run-and-push.js
+        pause
+        exit /b 1
+    )
+) else (
+    REM Git 在 PATH 中，直接運行
+    node run-and-push.js
+)
 
 echo.
 echo ========================================
