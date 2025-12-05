@@ -7,14 +7,13 @@ const { execSync } = require('child_process');
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-// 點擊座標 - 不同的廳
+// 點擊座標 - 左側的廳別
 const CLICK_POSITIONS = [
-  { name: '歐廳', x: 189, y: 218 },
-  { name: '百家樂', x: 265, y: 218 },
-  { name: '競速', x: 341, y: 218 },
-  { name: '龍虎', x: 416, y: 218 },
-  { name: '21點', x: 492, y: 218 },
-  { name: '歐利廳', x: 33, y: 360 },
+  { name: '歐洲廳', x: 80, y: 400 },
+  { name: '色碟', x: 80, y: 450 },
+  { name: '競咪', x: 80, y: 510 },
+  // 如果有其他廳別，可以繼續添加（每個相隔約 50-60 像素）
+  // { name: '卡卡灣廳', x: 80, y: 350 },  // 範例
 ];
 
 // 點擊 Canvas 上的座標
@@ -137,6 +136,12 @@ async function runCheck() {
 
     if (resourceType === 'image') {
       const fileName = url.split('/').pop();
+
+      // 只檢查 .jpg 檔案
+      if (!fileName.toLowerCase().endsWith('.jpg')) {
+        return;
+      }
+
       const imageInfo = {
         url,
         fileName,
@@ -168,22 +173,26 @@ async function runCheck() {
       timeout: 60000,
     });
 
-    console.log('⏳ 等待初始頁面加載（30 秒）...');
-    await delay(30000);  // 等待初始頁面
+    console.log('⏳ 等待初始頁面加載（1 分鐘）...');
+    await delay(60000);  // 等待初始頁面完全加載
 
-    console.log('\n🎯 開始點擊不同的廳，收集所有圖片...\n');
+    if (CLICK_POSITIONS.length > 0) {
+      console.log('\n🎯 開始點擊不同的廳，收集所有圖片...\n');
 
-    // 依次點擊每個分類
-    for (const position of CLICK_POSITIONS) {
-      console.log(`📌 點擊：${position.name} (${position.x}, ${position.y})`);
+      // 依次點擊每個分類
+      for (const position of CLICK_POSITIONS) {
+        console.log(`📌 點擊：${position.name} (${position.x}, ${position.y})`);
 
-      await clickCanvas(page, position.x, position.y);
+        await clickCanvas(page, position.x, position.y);
 
-      // 等待該分類的圖片加載
-      console.log(`⏳ 等待 ${position.name} 的圖片加載...`);
-      await delay(20000);  // 每個分類等待 20 秒
+        // 等待該分類的圖片加載
+        console.log(`⏳ 等待 ${position.name} 的圖片加載...`);
+        await delay(20000);  // 每個分類等待 20 秒
 
-      console.log(`✅ ${position.name} 完成，當前已收集 ${allImages.size} 張圖片\n`);
+        console.log(`✅ ${position.name} 完成，當前已收集 ${allImages.size} 張 JPG 圖片\n`);
+      }
+    } else {
+      console.log('📋 未設定廳別點擊座標，只檢測初始頁面的圖片');
     }
 
     console.log('⏳ 最後確認所有資源...');
