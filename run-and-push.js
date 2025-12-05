@@ -25,30 +25,29 @@ async function clickCanvas(page, x, y) {
   await new Promise(resolve => setTimeout(resolve, 500));
 }
 
-// 滾動頁面以觸發 Lazy Loading
+// 使用滑鼠滾輪滾動 Canvas 遊戲
 async function scrollToLoadImages(page) {
-  console.log('   📜 開始滾動頁面加載隱藏的圖片...');
+  console.log('   📜 開始滾動遊戲畫面加載隱藏的圖片...');
 
-  // 獲取頁面高度並分段滾動
-  await page.evaluate(async () => {
-    // 滾動到頁面最底部，慢慢滾動以觸發 lazy loading
-    const scrollHeight = document.body.scrollHeight;
-    const viewportHeight = window.innerHeight;
-    const scrollSteps = Math.ceil(scrollHeight / (viewportHeight / 2)); // 每次滾動半個視窗
+  // 先移動滑鼠到遊戲中心位置
+  await page.mouse.move(960, 540);
 
-    for (let i = 0; i < scrollSteps; i++) {
-      window.scrollTo(0, (viewportHeight / 2) * i);
-      await new Promise(resolve => setTimeout(resolve, 500)); // 每次滾動後等待 500ms
-    }
+  // 向下滾動多次（模擬滑鼠滾輪）
+  for (let i = 0; i < 10; i++) {
+    console.log(`   ⬇️  向下滾動 (${i + 1}/10)...`);
+    await page.mouse.wheel({ deltaY: 500 }); // 向下滾動
+    await delay(1000); // 每次滾動後等待 1 秒讓圖片加載
+  }
 
-    // 滾動到最底部
-    window.scrollTo(0, scrollHeight);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+  console.log('   ⏳ 等待圖片加載...');
+  await delay(3000);
 
-    // 滾動回頂部
-    window.scrollTo(0, 0);
-    await new Promise(resolve => setTimeout(resolve, 500));
-  });
+  // 向上滾動回頂部
+  for (let i = 0; i < 10; i++) {
+    console.log(`   ⬆️  向上滾動 (${i + 1}/10)...`);
+    await page.mouse.wheel({ deltaY: -500 }); // 向上滾動
+    await delay(500);
+  }
 
   console.log('   ✅ 滾動完成');
 }
