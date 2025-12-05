@@ -91,6 +91,12 @@ async function checkWebsite() {
   console.log(`🔍 開始檢查網站: ${new Date().toLocaleString('zh-TW')}`);
   console.log('='.repeat(60));
 
+  // 調試信息
+  console.log(`⚙️  配置:`);
+  console.log(`   - Headless: ${CONFIG.headless}`);
+  console.log(`   - DISPLAY: ${process.env.DISPLAY || '(未設置)'}`);
+  console.log(`   - URL: ${CONFIG.url}`);
+
   const browser = await puppeteer.launch({
     headless: CONFIG.headless,
     args: [
@@ -170,6 +176,15 @@ async function checkWebsite() {
     await delay(150000);  // 等待 2.5 分鐘讓遊戲完全加載
 
     console.log('✅ 遊戲應該已加載完成，正在收集圖片資源...');
+
+    // 📸 調試：拍攝截圖查看實際顯示內容
+    try {
+      const screenshotPath = path.join(__dirname, 'debug-screenshot.png');
+      await page.screenshot({ path: screenshotPath, fullPage: false });
+      console.log(`📸 調試截圖已保存: ${screenshotPath}`);
+    } catch (err) {
+      console.log('截圖失敗:', err.message);
+    }
 
     // 遊戲加載完成後，荷官圖片已經顯示，不需要點擊
     // 點擊操作已移除，因為它們在遊戲未加載時無效

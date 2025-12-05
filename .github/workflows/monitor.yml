@@ -34,6 +34,12 @@ jobs:
       with:
         chrome-version: stable
 
+    - name: Install display dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb x11-xkb-utils xfonts-100dpi xfonts-75dpi xfonts-scalable xfonts-cyrillic x11-apps
+        sudo apt-get install -y dbus-x11
+
     - name: Run monitor check with virtual display
       env:
         MONITOR_URL: ${{ secrets.MONITOR_URL }}
@@ -42,12 +48,25 @@ jobs:
         HEADLESS: false
         DISPLAY: :99
       run: |
-        # 啟動虛擬顯示器（Xvfb）
-        sudo apt-get install -y xvfb
-        Xvfb :99 -screen 0 1920x1080x24 > /dev/null 2>&1 &
-        sleep 2
+        # 啟動虛擬顯示器（Xvfb）增強配置
+        echo "🖥️  啟動 Xvfb 虛擬顯示器..."
+        Xvfb :99 -screen 0 1920x1080x24 -ac +extension GLX +render -noreset > /dev/null 2>&1 &
+        XVFB_PID=$!
+        echo "Xvfb PID: $XVFB_PID"
+
+        # 等待 Xvfb 啟動
+        sleep 3
+
+        # 驗證 DISPLAY
+        echo "DISPLAY=$DISPLAY"
+        xdpyinfo -display :99 >/dev/null 2>&1 && echo "✅ Xvfb 啟動成功" || echo "❌ Xvfb 啟動失敗"
+
         # 運行檢測
+        echo "🔍 開始運行檢測（非 headless 模式）..."
         node check-and-save.js
+
+        # 清理
+        kill $XVFB_PID 2>/dev/null || true
 
     - name: Commit and push results
       run: |
