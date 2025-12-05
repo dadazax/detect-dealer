@@ -7,6 +7,33 @@ const { execSync } = require('child_process');
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+// 點擊座標 - 不同的廳
+const CLICK_POSITIONS = [
+  { name: '歐廳', x: 189, y: 218 },
+  { name: '百家樂', x: 265, y: 218 },
+  { name: '競速', x: 341, y: 218 },
+  { name: '龍虎', x: 416, y: 218 },
+  { name: '21點', x: 492, y: 218 },
+  { name: '歐利廳', x: 33, y: 360 },
+];
+
+// 點擊 Canvas 上的座標
+async function clickCanvas(page, x, y) {
+  await page.evaluate((x, y) => {
+    const canvas = document.querySelector('canvas');
+    if (canvas) {
+      const event = new MouseEvent('click', {
+        bubbles: true,
+        cancelable: true,
+        view: window,
+        clientX: x,
+        clientY: y,
+      });
+      canvas.dispatchEvent(event);
+    }
+  }, x, y);
+}
+
 function saveResults(data) {
   const dataDir = path.join(__dirname, 'docs', 'data');
   if (!fs.existsSync(dataDir)) {
@@ -141,11 +168,26 @@ async function runCheck() {
       timeout: 60000,
     });
 
-    console.log('⏳ 等待遊戲加載（2.5 分鐘）...');
-    await delay(150000);  // 2.5 分鐘
+    console.log('⏳ 等待初始頁面加載（30 秒）...');
+    await delay(30000);  // 等待初始頁面
+
+    console.log('\n🎯 開始點擊不同的廳，收集所有圖片...\n');
+
+    // 依次點擊每個分類
+    for (const position of CLICK_POSITIONS) {
+      console.log(`📌 點擊：${position.name} (${position.x}, ${position.y})`);
+
+      await clickCanvas(page, position.x, position.y);
+
+      // 等待該分類的圖片加載
+      console.log(`⏳ 等待 ${position.name} 的圖片加載...`);
+      await delay(20000);  // 每個分類等待 20 秒
+
+      console.log(`✅ ${position.name} 完成，當前已收集 ${allImages.size} 張圖片\n`);
+    }
 
     console.log('⏳ 最後確認所有資源...');
-    await delay(10000);  // 再等 10 秒
+    await delay(10000);  // 再等 10 秒確保所有請求完成
 
     const errorCount = failed404Images.size;
     const successCount = successImages.size;
