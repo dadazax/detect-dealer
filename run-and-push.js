@@ -4,8 +4,61 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const https = require('https');
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// 發送 Telegram 通知
+async function sendTelegramNotification(message) {
+  const botToken = process.env.TELEGRAM_BOT_TOKEN;
+  const chatId = process.env.TELEGRAM_CHAT_ID;
+
+  if (!botToken || !chatId) {
+    console.log('⚠️ 未設置 Telegram 配置，跳過通知');
+    return;
+  }
+
+  const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+  const data = JSON.stringify({
+    chat_id: chatId,
+    text: message,
+    parse_mode: 'HTML',
+  });
+
+  return new Promise((resolve, reject) => {
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Content-Length': data.length,
+      },
+    };
+
+    const req = https.request(url, options, (res) => {
+      let responseData = '';
+      res.on('data', (chunk) => {
+        responseData += chunk;
+      });
+      res.on('end', () => {
+        if (res.statusCode === 200) {
+          console.log('✅ Telegram 通知已發送');
+          resolve(responseData);
+        } else {
+          console.error(`❌ Telegram 通知失敗: ${res.statusCode}`);
+          reject(new Error(`HTTP ${res.statusCode}`));
+        }
+      });
+    });
+
+    req.on('error', (error) => {
+      console.error('❌ Telegram 通知發送錯誤:', error.message);
+      reject(error);
+    });
+
+    req.write(data);
+    req.end();
+  });
+}
 
 // 點擊座標 - 左側的廳別
 const CLICK_POSITIONS = [
@@ -119,7 +172,11 @@ function gitPush() {
           throw err;
         }
         console.log('推送失敗，等待 5 秒後重試...');
-        execSync('sleep 5', { cwd: __dirname });
+        // 使用同步方式延遲（因為 Windows cmd 沒有 sleep 命令）
+        const start = Date.now();
+        while (Date.now() - start < 5000) {
+          // 空循環等待 5 秒
+        }
       }
     }
   } catch (error) {
@@ -260,10 +317,34 @@ async function runCheck() {
     // 推送到 GitHub
     gitPush();
 
+    // 發送 Telegram 通知
+    const timestamp = new Date().toLocaleString('zh-TW');
+    let telegramMessage = `🔍 <b>網站監控報告</b>\n`;
+    telegramMessage += `⏰ 時間: ${timestamp}\n`;
+    telegramMessage += `📊 檢查了 ${totalCount} 張圖片\n`;
+    telegramMessage += `✅ 正常: ${successCount} 張\n`;
+
     if (errorCount === 0) {
+      telegramMessage += `\n✅ 所有圖片資源正常！`;
       console.log('\n✅ 所有圖片資源正常！');
     } else {
+      telegramMessage += `❌ 錯誤: ${errorCount} 張\n\n`;
+      telegramMessage += `⚠️ <b>發現問題圖片：</b>\n`;
+      errors.slice(0, 10).forEach((err, idx) => {
+        telegramMessage += `${idx + 1}. ${err.fileName}\n`;
+      });
+      if (errorCount > 10) {
+        telegramMessage += `... 及其他 ${errorCount - 10} 張\n`;
+      }
       console.log(`\n⚠️ 發現 ${errorCount} 個圖片 404 錯誤`);
+    }
+
+    telegramMessage += `\n🔗 查看詳情: https://dadazax.github.io/detect-dealer/`;
+
+    try {
+      await sendTelegramNotification(telegramMessage);
+    } catch (error) {
+      console.error('❌ Telegram 通知發送失敗，但檢查已完成');
     }
 
   } catch (error) {
@@ -284,6 +365,15 @@ async function runCheck() {
 
     saveResults(errorData);
     gitPush();
+
+    // 發送錯誤通知到 Telegram
+    const timestamp = new Date().toLocaleString('zh-TW');
+    const telegramMessage = `❌ <b>網站監控失敗</b>\n⏰ 時間: ${timestamp}\n\n錯誤訊息: ${error.message}`;
+    try {
+      await sendTelegramNotification(telegramMessage);
+    } catch (e) {
+      console.error('❌ Telegram 通知發送失敗');
+    }
   } finally {
     await browser.close();
     console.log('🔒 瀏覽器已關閉\n');
