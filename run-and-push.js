@@ -16,21 +16,13 @@ const CLICK_POSITIONS = [
   // { name: '卡卡灣廳', x: 80, y: 350 },  // 範例
 ];
 
-// 點擊 Canvas 上的座標
+// 點擊 Canvas 上的座標 - 使用完整的滑鼠事件序列
 async function clickCanvas(page, x, y) {
-  await page.evaluate((x, y) => {
-    const canvas = document.querySelector('canvas');
-    if (canvas) {
-      const event = new MouseEvent('click', {
-        bubbles: true,
-        cancelable: true,
-        view: window,
-        clientX: x,
-        clientY: y,
-      });
-      canvas.dispatchEvent(event);
-    }
-  }, x, y);
+  // 方法 1：使用 Puppeteer 的原生點擊（推薦）
+  await page.mouse.click(x, y);
+
+  // 短暫延遲讓事件處理
+  await new Promise(resolve => setTimeout(resolve, 500));
 }
 
 function saveResults(data) {
