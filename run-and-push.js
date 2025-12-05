@@ -29,8 +29,8 @@ async function sendTelegramNotification(message) {
     const options = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Content-Length': data.length,
+        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Length': Buffer.byteLength(data, 'utf8'),
       },
     };
 
@@ -45,7 +45,8 @@ async function sendTelegramNotification(message) {
           resolve(responseData);
         } else {
           console.error(`❌ Telegram 通知失敗: ${res.statusCode}`);
-          reject(new Error(`HTTP ${res.statusCode}`));
+          console.error(`回應內容: ${responseData}`);
+          reject(new Error(`HTTP ${res.statusCode}: ${responseData}`));
         }
       });
     });
@@ -142,12 +143,53 @@ function gitPush() {
   try {
     console.log('\n📤 推送到 GitHub...');
 
+    // 檢測 Git 命令
+    let gitCmd = 'git';
+    try {
+      execSync('git --version', { cwd: __dirname, stdio: 'ignore' });
+    } catch (err) {
+      // Git 不在 PATH 中，嘗試使用 Git Bash
+      console.log('⚠️ 未找到 git 命令，嘗試使用 Git Bash...');
+      const gitBashPaths = [
+        'C:\\Program Files\\Git\\bin\\bash.exe',
+        'C:\\Program Files (x86)\\Git\\bin\\bash.exe',
+      ];
+
+      let gitBashFound = false;
+      for (const bashPath of gitBashPaths) {
+        if (fs.existsSync(bashPath)) {
+          gitCmd = `"${bashPath}" -c`;
+          gitBashFound = true;
+          console.log(`✅ 找到 Git Bash: ${bashPath}`);
+          break;
+        }
+      }
+
+      if (!gitBashFound) {
+        console.error('❌ 找不到 Git 或 Git Bash，跳過推送');
+        return;
+      }
+    }
+
+    // 執行 Git 命令的輔助函數
+    const runGit = (cmd) => {
+      if (gitCmd.includes('bash')) {
+        return execSync(`${gitCmd} "cd '${__dirname.replace(/\\/g, '/')}' && ${cmd}"`, { stdio: 'inherit' });
+      } else {
+        return execSync(cmd, { cwd: __dirname, stdio: 'inherit' });
+      }
+    };
+
     // 添加變更
-    execSync('git add docs/data/', { cwd: __dirname, stdio: 'inherit' });
+    runGit('git add docs/data/');
 
     // 檢查是否有變更
     try {
-      execSync('git diff --quiet && git diff --staged --quiet', { cwd: __dirname });
+      if (gitCmd.includes('bash')) {
+        execSync(`${gitCmd} "cd '${__dirname.replace(/\\/g, '/')}' && git diff --quiet && git diff --staged --quiet"`);
+      } else {
+        execSync('git diff --quiet && git diff --staged --quiet', { cwd: __dirname });
+      }
       console.log('沒有變更需要提交');
       return;
     } catch (err) {
@@ -156,14 +198,14 @@ function gitPush() {
 
     // 提交
     const timestamp = new Date().toLocaleString('zh-TW');
-    execSync(`git commit -m "本地檢測結果 - ${timestamp}"`, { cwd: __dirname, stdio: 'inherit' });
+    runGit(`git commit -m "本地檢測結果 - ${timestamp}"`);
 
     // 推送（最多重試 3 次）
     for (let i = 1; i <= 3; i++) {
       try {
         console.log(`嘗試推送 (第 ${i} 次)...`);
-        execSync('git pull --rebase', { cwd: __dirname, stdio: 'inherit' });
-        execSync('git push', { cwd: __dirname, stdio: 'inherit' });
+        runGit('git pull --rebase');
+        runGit('git push');
         console.log('✅ 推送成功！');
         return;
       } catch (err) {
