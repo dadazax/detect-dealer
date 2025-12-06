@@ -1,6 +1,27 @@
 {
   "checks": [
     {
+      "timestamp": "2025-12-06T02:33:34.697Z",
+      "totalCount": 2,
+      "successCount": 2,
+      "errorCount": 0,
+      "successImages": [
+        {
+          "url": "http://uat.playacestaging.com:81/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/playace_10.png",
+          "fileName": "playace_10.png",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "success": true,
+      "url": "http://uat.playacestaging.com:81/forwardGame.do?params=des3jhDLci176gtCZJbRdvdEAtTx26gXp7HeoFkpswjXxQJu9sWfY1h/Poynv/Q8eDLvmfefs3zWb3GhbpuA9G+oCDVivRABrbZIbHchsNEceFq08ETKnHHNWMPZjkdEvHncD6ckm6qvQL8pSM2uWsvEZDlmLZRGY9BqYkam5ecNri6rgfpfY2gTxFTqY2Y8WLzq1ivPebfp6ZIgMTCA3MVzAKa//dA7lelQNKU/LE//9ASRubp6bKjUuQd8oNFgtd8vMF/Apaos+aa5edEvdg==&key=087690ad416fa1d53a202a612021ec0f"
+    },
+    {
       "timestamp": "2025-12-05T13:35:10.998Z",
       "totalCount": 2,
       "successCount": 2,
