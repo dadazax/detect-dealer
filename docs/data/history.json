@@ -1,6 +1,415 @@
 {
   "checks": [
     {
+      "timestamp": "2025-12-08T08:31:05.646Z",
+      "environment": "PROD",
+      "totalCount": 79,
+      "successCount": 76,
+      "errorCount": 3,
+      "successImages": [
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv2/images/ad/20251114_pc_mt_loading_hans.jpg",
+          "fileName": "20251114_pc_mt_loading_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv2/images/index/chrome_btn.jpg",
+          "fileName": "chrome_btn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv2/images/index/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/loading_BG.c7084826.jpg",
+          "fileName": "loading_BG.c7084826.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/eventNoVideoBg.ae47569d.jpg",
+          "fileName": "eventNoVideoBg.ae47569d.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/rebrand_popup_bg.9bbd0361.jpg",
+          "fileName": "rebrand_popup_bg.9bbd0361.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/ad/20251114_pc_mt_banner_hans.jpg",
+          "fileName": "20251114_pc_mt_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/maintenance/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Hinata.jpg",
+          "fileName": "Hinata.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Zinia.jpg",
+          "fileName": "Zinia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Katarina.jpg",
+          "fileName": "Katarina.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Loeva.jpg",
+          "fileName": "Loeva.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Amina.jpg",
+          "fileName": "Amina.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Beck.jpg",
+          "fileName": "Beck.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/ad/20251105_pc_pa6_hans.jpg",
+          "fileName": "20251105_pc_pa6_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/ad/20251121_pc_banner_hans.jpg",
+          "fileName": "20251121_pc_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/ad/20251204_pc_VG06_banner_hans.jpg",
+          "fileName": "20251204_pc_VG06_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv2/images/ad/20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "fileName": "20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Polka.jpg",
+          "fileName": "Polka.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Odette.jpg",
+          "fileName": "Odette.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Axl.jpg",
+          "fileName": "Axl.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Beau.jpg",
+          "fileName": "Beau.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Loras.jpg",
+          "fileName": "Loras.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Valina.jpg",
+          "fileName": "Valina.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Jiho.jpg",
+          "fileName": "Jiho.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Alfia.jpg",
+          "fileName": "Alfia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Lyric.jpg",
+          "fileName": "Lyric.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Kazel.jpg",
+          "fileName": "Kazel.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Agape.jpg",
+          "fileName": "Agape.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Caroline.jpg",
+          "fileName": "Caroline.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Ellis.jpg",
+          "fileName": "Ellis.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Linnie.jpg",
+          "fileName": "Linnie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Silkie.jpg",
+          "fileName": "Silkie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Levie.jpg",
+          "fileName": "Levie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Elsie.jpg",
+          "fileName": "Elsie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Zada.jpg",
+          "fileName": "Zada.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Shiela.jpg",
+          "fileName": "Shiela.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Keziah.jpg",
+          "fileName": "Keziah.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Andrina.jpg",
+          "fileName": "Andrina.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Minerva.jpg",
+          "fileName": "Minerva.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/CGY/Cyriz.jpg",
+          "fileName": "Cyriz.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/MS4/Gigi.jpg",
+          "fileName": "Gigi.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/MS5/Lydia.jpg",
+          "fileName": "Lydia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Diya.jpg",
+          "fileName": "Diya.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/MS5/Selia.jpg",
+          "fileName": "Selia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Jaelyn.jpg",
+          "fileName": "Jaelyn.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Amberly.jpg",
+          "fileName": "Amberly.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Caitlin.jpg",
+          "fileName": "Caitlin.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Amanda.jpg",
+          "fileName": "Amanda.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Arlet.jpg",
+          "fileName": "Arlet.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Daleyza.jpg",
+          "fileName": "Daleyza.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Janice.jpg",
+          "fileName": "Janice.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Alexia.jpg",
+          "fileName": "Alexia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Makayla.jpg",
+          "fileName": "Makayla.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Sophie.jpg",
+          "fileName": "Sophie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Gia.jpg",
+          "fileName": "Gia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Suzie.jpg",
+          "fileName": "Suzie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Eve.jpg",
+          "fileName": "Eve.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Capri.jpg",
+          "fileName": "Capri.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Lisa.jpg",
+          "fileName": "Lisa.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Thea.jpg",
+          "fileName": "Thea.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Indie.jpg",
+          "fileName": "Indie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Melody.jpg",
+          "fileName": "Melody.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Solana.jpg",
+          "fileName": "Solana.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Ivy.jpg",
+          "fileName": "Ivy.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Cassia.jpg",
+          "fileName": "Cassia.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Aliza.jpg",
+          "fileName": "Aliza.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Anny.jpg",
+          "fileName": "Anny.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Danica.jpg",
+          "fileName": "Danica.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Zora.jpg",
+          "fileName": "Zora.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Aarya.jpg",
+          "fileName": "Aarya.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/L5/Arianny.jpg",
+          "fileName": "Arianny.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/LED/Valley.jpg",
+          "fileName": "Valley.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/LED/Zoe.jpg",
+          "fileName": "Zoe.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/LED/Natalie.jpg",
+          "fileName": "Natalie.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/LED/Zuri.jpg",
+          "fileName": "Zuri.jpg",
+          "status": 200
+        }
+      ],
+      "errors": [
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/ad/20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "fileName": "20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "status": 404
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/images/dealer/EMA/Training.jpg",
+          "fileName": "Training.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv2/images/dealer/EMA/Training.jpg",
+          "fileName": "Training.jpg",
+          "status": 404
+        }
+      ],
+      "success": false,
+      "url": "http://gcih5.playacegame.com:81/forwardGame.do?params=oQyN8IZXIT3dNFnSSyK4KoGN+lkBlGUxqujrQxIVUyDQaVgYpFM6tmGHJDsBK344Mbp/wtZQ97vcoFECZm6/rLQAoAM1T43pvb2L39SenoiT+d+oYYnYellMc+cJ58nQNnGzGUeuFnt7oaAfMi7WbyyEsHRUCVtH8CgAOn2eJh/CFyuEsFW0z3OKuWZdRugSvqNbmnAcD/F26OTTKE3qS7BsigEWbfwXeF98MgOnC9AApCosTw5BP/ZRGvXn6SiRxbXvq+2l8XIMjGt4QQlZ1A==&key=cfc99b3ab3072937e843291e9c982647",
+      "source": "local"
+    },
+    {
       "timestamp": "2025-12-08T08:10:59.222Z",
       "environment": "PROD",
       "totalCount": 159,
