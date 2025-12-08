@@ -112,31 +112,52 @@ function saveResults(data) {
     fs.mkdirSync(dataDir, { recursive: true });
   }
 
-  // 保存最新結果
-  const latestFile = path.join(dataDir, 'latest-prod.json');
+  // 保存到 PROD 專用文件
+  const latestProdFile = path.join(dataDir, 'latest-prod.json');
+  fs.writeFileSync(latestProdFile, JSON.stringify(data, null, 2));
+
+  const historyProdFile = path.join(dataDir, 'history-prod.json');
+  let historyProd = { checks: [] };
+
+  if (fs.existsSync(historyProdFile)) {
+    try {
+      historyProd = JSON.parse(fs.readFileSync(historyProdFile, 'utf8'));
+    } catch (error) {
+      console.error('讀取 PROD 歷史記錄失敗:', error.message);
+    }
+  }
+
+  historyProd.checks.unshift(data);
+  if (historyProd.checks.length > 100) {
+    historyProd.checks = historyProd.checks.slice(0, 100);
+  }
+  fs.writeFileSync(historyProdFile, JSON.stringify(historyProd, null, 2));
+
+  // 同時保存到主文件（latest.json）- 使用向後兼容的單環境格式
+  const latestFile = path.join(dataDir, 'latest.json');
   fs.writeFileSync(latestFile, JSON.stringify(data, null, 2));
 
-  // 保存歷史記錄
-  const historyFile = path.join(dataDir, 'history-prod.json');
+  // 更新主歷史記錄
+  const historyFile = path.join(dataDir, 'history.json');
   let history = { checks: [] };
 
   if (fs.existsSync(historyFile)) {
     try {
       history = JSON.parse(fs.readFileSync(historyFile, 'utf8'));
     } catch (error) {
-      console.error('讀取歷史記錄失敗:', error.message);
+      console.error('讀取主歷史記錄失敗:', error.message);
     }
   }
 
   history.checks.unshift(data);
-
-  // 只保留最近 100 條記錄
   if (history.checks.length > 100) {
     history.checks = history.checks.slice(0, 100);
   }
-
   fs.writeFileSync(historyFile, JSON.stringify(history, null, 2));
-  console.log('✅ 結果已保存到 latest-prod.json 和 history-prod.json');
+
+  console.log('✅ 結果已保存到：');
+  console.log('   - latest-prod.json / history-prod.json (PROD 專用)');
+  console.log('   - latest.json / history.json (網頁顯示)');
 }
 
 function gitPush() {
@@ -180,8 +201,8 @@ function gitPush() {
       }
     };
 
-    // 添加變更
-    runGit('git add docs/data/latest-prod.json docs/data/history-prod.json');
+    // 添加所有數據文件變更
+    runGit('git add docs/data/');
 
     // 檢查是否有變更
     try {
