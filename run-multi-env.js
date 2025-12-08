@@ -447,23 +447,35 @@ async function runAllChecks() {
       if (result.errorCount === 0) {
         telegramMessage += `\n✨ 所有圖片資源正常！\n`;
       } else {
-        // 按檔名去重（同一檔名可能有多個 URL）
+        // 按檔名去重並過濾排除的檔案
         const uniqueErrors = [];
         const seenFileNames = new Set();
 
         result.errors.forEach(err => {
+          // 排除 test*.jpg 和 Training.jpg
+          if (err.fileName.toLowerCase().startsWith('test') && err.fileName.toLowerCase().endsWith('.jpg')) {
+            return; // 跳過 test*.jpg
+          }
+          if (err.fileName.toLowerCase() === 'training.jpg') {
+            return; // 跳過 Training.jpg
+          }
+
           if (!seenFileNames.has(err.fileName)) {
             seenFileNames.add(err.fileName);
             uniqueErrors.push(err);
           }
         });
 
-        telegramMessage += `❌ 錯誤: ${uniqueErrors.length} 張（去重後）\n\n`;
-        telegramMessage += `<b>⚠️ 錯誤圖片列表：</b>\n`;
-        uniqueErrors.forEach((err, idx) => {
-          telegramMessage += `${idx + 1}. ${err.fileName}\n`;
-          telegramMessage += `   └ HTTP ${err.status}\n`;
-        });
+        if (uniqueErrors.length === 0) {
+          telegramMessage += `\n✨ 所有重要圖片資源正常！\n`;
+        } else {
+          telegramMessage += `❌ 錯誤: ${uniqueErrors.length} 張（去重且過濾後）\n\n`;
+          telegramMessage += `<b>⚠️ 錯誤圖片列表：</b>\n`;
+          uniqueErrors.forEach((err, idx) => {
+            telegramMessage += `${idx + 1}. ${err.fileName}\n`;
+            telegramMessage += `   └ HTTP ${err.status}\n`;
+          });
+        }
       }
     } else {
       telegramMessage += `❌ 檢測失敗: ${result.error || '未知錯誤'}\n`;

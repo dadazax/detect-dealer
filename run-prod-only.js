@@ -394,25 +394,38 @@ async function runCheck() {
       telegramMessage += `\n✅ 所有圖片資源正常！`;
       console.log('\n✅ 所有圖片資源正常！');
     } else {
-      // 按檔名去重
+      // 按檔名去重並過濾排除的檔案
       const uniqueErrors = [];
       const seenFileNames = new Set();
       errors.forEach(err => {
+        // 排除 test*.jpg 和 Training.jpg
+        if (err.fileName.toLowerCase().startsWith('test') && err.fileName.toLowerCase().endsWith('.jpg')) {
+          return; // 跳過 test*.jpg
+        }
+        if (err.fileName.toLowerCase() === 'training.jpg') {
+          return; // 跳過 Training.jpg
+        }
+
         if (!seenFileNames.has(err.fileName)) {
           seenFileNames.add(err.fileName);
           uniqueErrors.push(err);
         }
       });
 
-      telegramMessage += `❌ 錯誤: ${uniqueErrors.length} 張（去重後）\n\n`;
-      telegramMessage += `⚠️ <b>發現問題圖片：</b>\n`;
-      uniqueErrors.slice(0, 10).forEach((err, idx) => {
-        telegramMessage += `${idx + 1}. ${err.fileName}\n`;
-      });
-      if (uniqueErrors.length > 10) {
-        telegramMessage += `... 及其他 ${uniqueErrors.length - 10} 張\n`;
+      if (uniqueErrors.length === 0) {
+        telegramMessage += `\n✅ 所有重要圖片資源正常！`;
+        console.log('\n✅ 所有重要圖片資源正常（已忽略測試檔案）');
+      } else {
+        telegramMessage += `❌ 錯誤: ${uniqueErrors.length} 張（去重且過濾後）\n\n`;
+        telegramMessage += `⚠️ <b>發現問題圖片：</b>\n`;
+        uniqueErrors.slice(0, 10).forEach((err, idx) => {
+          telegramMessage += `${idx + 1}. ${err.fileName}\n`;
+        });
+        if (uniqueErrors.length > 10) {
+          telegramMessage += `... 及其他 ${uniqueErrors.length - 10} 張\n`;
+        }
+        console.log(`\n⚠️ 發現 ${errorCount} 個圖片 404 錯誤（${uniqueErrors.length} 個重要檔案，已排除測試檔）`);
       }
-      console.log(`\n⚠️ 發現 ${errorCount} 個圖片 404 錯誤（${uniqueErrors.length} 個獨特檔案）`);
     }
 
     telegramMessage += `\n🔗 查看詳情: https://dadazax.github.io/detect-dealer/`;

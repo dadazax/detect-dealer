@@ -587,10 +587,19 @@
 
                     // 顯示異常圖片（如果有）
                     if (env.errors && env.errors.length > 0) {
-                        // 去重
+                        // 去重並過濾排除的檔案
                         const uniqueErrors = [];
                         const seenFileNames = new Set();
                         env.errors.forEach(err => {
+                            // 排除 test*.jpg 和 Training.jpg
+                            const fileName = err.fileName.toLowerCase();
+                            if (fileName.startsWith('test') && fileName.endsWith('.jpg')) {
+                                return; // 跳過 test*.jpg
+                            }
+                            if (fileName === 'training.jpg') {
+                                return; // 跳過 Training.jpg
+                            }
+
                             if (!seenFileNames.has(err.fileName)) {
                                 seenFileNames.add(err.fileName);
                                 uniqueErrors.push(err);
@@ -664,12 +673,21 @@
                 </p>
             `;
 
-            // 顯示異常圖片（如果有）- 按檔名去重
+            // 顯示異常圖片（如果有）- 按檔名去重並過濾
             if (latest.errors && latest.errors.length > 0) {
-                // 去重
+                // 去重並過濾排除的檔案
                 const uniqueErrors = [];
                 const seenFileNames = new Set();
                 latest.errors.forEach(err => {
+                    // 排除 test*.jpg 和 Training.jpg
+                    const fileName = err.fileName.toLowerCase();
+                    if (fileName.startsWith('test') && fileName.endsWith('.jpg')) {
+                        return; // 跳過 test*.jpg
+                    }
+                    if (fileName === 'training.jpg') {
+                        return; // 跳過 Training.jpg
+                    }
+
                     if (!seenFileNames.has(err.fileName)) {
                         seenFileNames.add(err.fileName);
                         uniqueErrors.push(err);
