@@ -2,6 +2,505 @@
   "checks": [
     {
       "environment": "UAT",
+      "timestamp": "2025-12-08T06:19:21.100Z",
+      "totalCount": 97,
+      "successCount": 90,
+      "errorCount": 7,
+      "successImages": [
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/index/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/index/chrome_btn.jpg",
+          "fileName": "chrome_btn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251114_pc_mt_loading_hans.jpg",
+          "fileName": "20251114_pc_mt_loading_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/resource/PCPlaza/assets/loading_BG.c7084826.jpg",
+          "fileName": "loading_BG.c7084826.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/resource/PCPlaza/assets/eventNoVideoBg.ae47569d.jpg",
+          "fileName": "eventNoVideoBg.ae47569d.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/resource/PCPlaza/assets/rebrand_popup_bg.9bbd0361.jpg",
+          "fileName": "rebrand_popup_bg.9bbd0361.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251204_pc_VG06_banner_hans.jpg",
+          "fileName": "20251204_pc_VG06_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/resource/PCPlaza/assets/maintenance/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Sonya.jpg",
+          "fileName": "Sonya.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Rema.jpg",
+          "fileName": "Rema.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Ophelia.jpg",
+          "fileName": "Ophelia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Zariah.jpg",
+          "fileName": "Zariah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Rapha.jpg",
+          "fileName": "Rapha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Petal.jpg",
+          "fileName": "Petal.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "fileName": "20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251114_pc_mt_banner_hans.jpg",
+          "fileName": "20251114_pc_mt_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251105_pc_pa6_hans.jpg",
+          "fileName": "20251105_pc_pa6_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/20251121_pc_banner_hans.jpg",
+          "fileName": "20251121_pc_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/ad/ymsu_pa_pc_1720x196_hans.jpg",
+          "fileName": "ymsu_pa_pc_1720x196_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Pepper.jpg",
+          "fileName": "Pepper.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Saffi.jpg",
+          "fileName": "Saffi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Kyrie.jpg",
+          "fileName": "Kyrie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Shari.jpg",
+          "fileName": "Shari.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Aliana.jpg",
+          "fileName": "Aliana.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Jing.jpg",
+          "fileName": "Jing.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Moyra.jpg",
+          "fileName": "Moyra.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Edeva.jpg",
+          "fileName": "Edeva.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Darna.jpg",
+          "fileName": "Darna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Noriko.jpg",
+          "fileName": "Noriko.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Elijah.jpg",
+          "fileName": "Elijah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Alaia.jpg",
+          "fileName": "Alaia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Orpha.jpg",
+          "fileName": "Orpha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Asher.jpg",
+          "fileName": "Asher.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Skylar.jpg",
+          "fileName": "Skylar.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Anie.jpg",
+          "fileName": "Anie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Chanda.jpg",
+          "fileName": "Chanda.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Maeve.jpg",
+          "fileName": "Maeve.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Zella.jpg",
+          "fileName": "Zella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Clover.jpg",
+          "fileName": "Clover.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Sasha.jpg",
+          "fileName": "Sasha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Ameera.jpg",
+          "fileName": "Ameera.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/Kindy.jpg",
+          "fileName": "Kindy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/MS5/Giselle.jpg",
+          "fileName": "Giselle.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/MS5/Selia.jpg",
+          "fileName": "Selia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Janice.jpg",
+          "fileName": "Janice.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Alexia.jpg",
+          "fileName": "Alexia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Makayla.jpg",
+          "fileName": "Makayla.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Bryanna.jpg",
+          "fileName": "Bryanna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Casey.jpg",
+          "fileName": "Casey.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Ayesha.jpg",
+          "fileName": "Ayesha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Abril.jpg",
+          "fileName": "Abril.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Eunice.jpg",
+          "fileName": "Eunice.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Hoorain.jpg",
+          "fileName": "Hoorain.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Cassia.jpg",
+          "fileName": "Cassia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Rena.jpg",
+          "fileName": "Rena.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Jessie.jpg",
+          "fileName": "Jessie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Zora.jpg",
+          "fileName": "Zora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Juliet.jpg",
+          "fileName": "Juliet.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Gia.jpg",
+          "fileName": "Gia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Ivy.jpg",
+          "fileName": "Ivy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Capri.jpg",
+          "fileName": "Capri.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Eve.jpg",
+          "fileName": "Eve.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Anny.jpg",
+          "fileName": "Anny.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Cerys.jpg",
+          "fileName": "Cerys.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Celeste.jpg",
+          "fileName": "Celeste.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Val.jpg",
+          "fileName": "Val.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Elora.jpg",
+          "fileName": "Elora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Thiago.jpg",
+          "fileName": "Thiago.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Danica.jpg",
+          "fileName": "Danica.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Thea.jpg",
+          "fileName": "Thea.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/EMA/Alessia.jpg",
+          "fileName": "Alessia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Bridget.jpg",
+          "fileName": "Bridget.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Novi.jpg",
+          "fileName": "Novi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Kailyn.jpg",
+          "fileName": "Kailyn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Delphine.jpg",
+          "fileName": "Delphine.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Menucha.jpg",
+          "fileName": "Menucha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Imona.jpg",
+          "fileName": "Imona.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Mirha.jpg",
+          "fileName": "Mirha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Kathryn.jpg",
+          "fileName": "Kathryn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Leeba.jpg",
+          "fileName": "Leeba.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Galilea.jpg",
+          "fileName": "Galilea.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Leslie.jpg",
+          "fileName": "Leslie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Jazmine.jpg",
+          "fileName": "Jazmine.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Joanna.jpg",
+          "fileName": "Joanna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Jaelyn.jpg",
+          "fileName": "Jaelyn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Ora.jpg",
+          "fileName": "Ora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/LED/Zoe.jpg",
+          "fileName": "Zoe.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/LED/Valley.jpg",
+          "fileName": "Valley.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/LED/Adison.jpg",
+          "fileName": "Adison.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/LED/Nabi.jpg",
+          "fileName": "Nabi.jpg",
+          "status": 200
+        }
+      ],
+      "errors": [
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/test1.jpg",
+          "fileName": "test1.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/CGY/C081125C.jpg",
+          "fileName": "C081125C.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/MS4/M052.jpg",
+          "fileName": "M052.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Chiara.jpg",
+          "fileName": "Chiara.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Aaliyah.jpg",
+          "fileName": "Aaliyah.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/L5/Ananya.jpg",
+          "fileName": "Ananya.jpg",
+          "status": 404
+        },
+        {
+          "url": "http://uat.playacestaging.com:81/pc/pcv1/images/dealer/LED/Testing.jpg",
+          "fileName": "Testing.jpg",
+          "status": 404
+        }
+      ],
+      "success": false,
+      "url": "http://uat.playacestaging.com:81/forwardGame.do?params=des3jhDLci176gtCZJbRdvdEAtTx26gXp7HeoFkpswjXxQJu9sWfY1h/Poynv/Q8eDLvmfefs3zWb3GhbpuA9G+oCDVivRABrbZIbHchsNEceFq08ETKnHHNWMPZjkdEvHncD6ckm6qvQL8pSM2uWsvEZDlmLZRGY9BqYkam5ecNri6rgfpfY2gTxFTqY2Y8WLzq1ivPebfp6ZIgMTCA3MVzAKa//dA7lelQNKU/LE//9ASRubp6bKjUuQd8oNFgtd8vMF/Apaos+aa5edEvdg==&key=087690ad416fa1d53a202a612021ec0f",
+      "source": "local"
+    },
+    {
+      "environment": "UAT",
       "timestamp": "2025-12-08T06:08:28.440Z",
       "totalCount": 97,
       "successCount": 89,
