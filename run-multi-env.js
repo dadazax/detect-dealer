@@ -443,9 +443,20 @@ async function runAllChecks() {
       if (result.errorCount === 0) {
         telegramMessage += `\n✨ 所有圖片資源正常！\n`;
       } else {
-        telegramMessage += `❌ 錯誤: ${result.errorCount} 張\n\n`;
+        // 按檔名去重（同一檔名可能有多個 URL）
+        const uniqueErrors = [];
+        const seenFileNames = new Set();
+
+        result.errors.forEach(err => {
+          if (!seenFileNames.has(err.fileName)) {
+            seenFileNames.add(err.fileName);
+            uniqueErrors.push(err);
+          }
+        });
+
+        telegramMessage += `❌ 錯誤: ${uniqueErrors.length} 張（去重後）\n\n`;
         telegramMessage += `<b>⚠️ 錯誤圖片列表：</b>\n`;
-        result.errors.forEach((err, idx) => {
+        uniqueErrors.forEach((err, idx) => {
           telegramMessage += `${idx + 1}. ${err.fileName}\n`;
           telegramMessage += `   └ HTTP ${err.status}\n`;
         });
