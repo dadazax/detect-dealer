@@ -80,24 +80,32 @@ async function clickCanvas(page, x, y) {
   await new Promise(resolve => setTimeout(resolve, 500));
 }
 
-// 使用滑鼠滾輪滾動
-async function scrollToLoadImages(page) {
-  console.log('   📜 開始滾動遊戲畫面加載隱藏的圖片...');
-
-  await page.mouse.move(960, 540);
-
-  for (let i = 0; i < 10; i++) {
-    console.log(`   ⬇️  向下滾動 (${i + 1}/10)...`);
-    await page.mouse.wheel({ deltaY: 500 });
-    await delay(1000);
+// 增強版滾動函數 - 確保滾動到底部加載所有圖片
+async function scrollToLoadImages(page, shouldScroll = true) {
+  if (!shouldScroll) {
+    console.log('   ⏭️  跳過滾動');
+    return;
   }
 
-  console.log('   ⏳ 等待圖片加載...');
-  await delay(3000);
+  console.log('   📜 開始滾動遊戲畫面加載隱藏的圖片...');
 
-  for (let i = 0; i < 10; i++) {
-    console.log(`   ⬆️  向上滾動 (${i + 1}/10)...`);
-    await page.mouse.wheel({ deltaY: -500 });
+  // 移動滑鼠到遊戲中心位置
+  await page.mouse.move(960, 540);
+
+  // 向下滾動 20 次（增加滾動次數以確保到底）
+  for (let i = 0; i < 20; i++) {
+    console.log(`   ⬇️  向下滾動 (${i + 1}/20)...`);
+    await page.mouse.wheel({ deltaY: 600 });  // 增加滾動距離
+    await delay(1500);  // 增加等待時間讓圖片加載
+  }
+
+  console.log('   ⏳ 等待圖片完全加載...');
+  await delay(5000);  // 增加最終等待時間
+
+  // 向上滾動回頂部
+  for (let i = 0; i < 20; i++) {
+    console.log(`   ⬆️  向上滾動 (${i + 1}/20)...`);
+    await page.mouse.wheel({ deltaY: -600 });
     await delay(500);
   }
 
@@ -152,7 +160,7 @@ async function checkEnvironment(envName, url) {
       '--disable-setuid-sandbox',
       '--window-size=1920,1080',
     ],
-    protocolTimeout: 120000,  // 增加協議超時時間至 120 秒
+    protocolTimeout: 180000,  // 增加協議超時時間至 180 秒
   });
 
   const page = await browser.newPage();
@@ -205,13 +213,13 @@ async function checkEnvironment(envName, url) {
       timeout: 60000,
     });
 
-    console.log('⏳ 等待初始頁面加載（1 分鐘）...');
-    await delay(60000);
+    console.log('⏳ 等待初始頁面加載（90 秒）...');
+    await delay(90000);  // 增加初始加載時間
 
     console.log('\n📜 滾動初始頁面（卡卡灣廳）...');
-    await scrollToLoadImages(page);
+    await scrollToLoadImages(page, true);
     console.log(`   當前已收集 ${allImages.size} 張 JPG 圖片`);
-    await delay(5000);
+    await delay(10000);  // 增加等待時間
 
     if (CLICK_POSITIONS.length > 0) {
       console.log('\n🎯 開始點擊不同的廳，收集所有圖片...\n');
@@ -221,17 +229,13 @@ async function checkEnvironment(envName, url) {
         await clickCanvas(page, position.x, position.y);
 
         console.log(`⏳ 等待 ${position.name} 的頁面載入...`);
-        await delay(3000);
+        await delay(5000);  // 增加等待時間
 
-        if (position.scroll) {
-          console.log(`   📜 ${position.name} 需要滾動加載圖片`);
-          await scrollToLoadImages(page);
-        } else {
-          console.log(`   ⚡ ${position.name} 跳過滾動（優化速度）`);
-        }
+        // 使用 position.scroll 參數決定是否滾動
+        await scrollToLoadImages(page, position.scroll);
 
         console.log(`   ⏳ 等待圖片完全加載...`);
-        await delay(10000);
+        await delay(15000);  // 增加等待時間
 
         console.log(`✅ ${position.name} 完成，當前已收集 ${allImages.size} 張 JPG 圖片\n`);
       }
