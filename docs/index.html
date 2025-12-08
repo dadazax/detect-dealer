@@ -426,15 +426,17 @@
     <div class="container">
         <div class="header">
             <h1>🎮 PlayAce 網站監控系統</h1>
-            <p>由 GitHub Actions 自動監控，每 30 分鐘更新一次</p>
+            <p>由本地 Windows 定時任務自動監控（UAT + PROD 雙環境）</p>
             <div style="margin-top: 15px;">
-                <span class="badge auto">🤖 自動化監控</span>
+                <span class="badge auto">🖥️ 本地自動檢測</span>
+                <!-- 立即檢查按鈕已停用 - GitHub Actions 無法在 CI 環境正常檢測
                 <button class="manual-check-btn" id="checkBtn" onclick="triggerManualCheck()">
                     🔍 立即檢查
                 </button>
                 <button class="settings-btn" onclick="toggleSettings()">
                     ⚙️ 設定
                 </button>
+                -->
             </div>
 
             <!-- Worker URL 配置區域（進階選項）-->
