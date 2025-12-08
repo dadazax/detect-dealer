@@ -664,13 +664,23 @@
                 </p>
             `;
 
-            // 顯示異常圖片（如果有）
+            // 顯示異常圖片（如果有）- 按檔名去重
             if (latest.errors && latest.errors.length > 0) {
+                // 去重
+                const uniqueErrors = [];
+                const seenFileNames = new Set();
+                latest.errors.forEach(err => {
+                    if (!seenFileNames.has(err.fileName)) {
+                        seenFileNames.add(err.fileName);
+                        uniqueErrors.push(err);
+                    }
+                });
+
                 html += `
                     <div class="image-group error">
-                        <h3>❌ 異常圖片 (${latest.errors.length} 個)</h3>
+                        <h3>❌ 異常圖片 (${uniqueErrors.length} 個${uniqueErrors.length < latest.errors.length ? ' 去重後' : ''})</h3>
                         <div class="image-list">
-                            ${latest.errors.map(img => `
+                            ${uniqueErrors.map(img => `
                                 <div class="image-item error">
                                     <div class="image-filename">📷 ${img.fileName}</div>
                                     <div class="image-url">${img.url}</div>
