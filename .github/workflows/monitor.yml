@@ -1,11 +1,13 @@
 name: Website Monitor
 
 on:
-  # 定時執行 - 每天兩次（台灣時間 9:00 和 21:00，UTC 1:00 和 13:00）
-  schedule:
-    - cron: '0 1,13 * * *'
+  # 定時執行已停用 - GitHub Actions headless 模式只能檢測到 2 張圖片
+  # 原因：Canvas 遊戲有強大的反自動化檢測，無法在 CI 環境中繞過
+  # 解決方案：使用本地 Windows 定時任務運行 run-multi-env.js
+  # schedule:
+  #   - cron: '0 1,13 * * *'
 
-  # 允許手動觸發
+  # 允許手動觸發（僅供測試，實際檢測請使用本地運行）
   workflow_dispatch:
 
 jobs:
