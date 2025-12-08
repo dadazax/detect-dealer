@@ -16,9 +16,9 @@ const ENVIRONMENTS = [
 
 // 點擊座標 - 左側的廳別
 const CLICK_POSITIONS = [
-  { name: '歐洲廳', x: 80, y: 400 },
-  { name: '色碟', x: 80, y: 450 },
-  { name: '競咪', x: 80, y: 510 },
+  { name: '歐洲廳', x: 80, y: 400, scroll: true },
+  // 色碟已跳過，不需要檢查
+  { name: '競咪', x: 80, y: 510, scroll: false },  // 競咪不需要向下滾動
 ];
 
 // 發送 Telegram 通知
@@ -152,6 +152,7 @@ async function checkEnvironment(envName, url) {
       '--disable-setuid-sandbox',
       '--window-size=1920,1080',
     ],
+    protocolTimeout: 120000,  // 增加協議超時時間至 120 秒
   });
 
   const page = await browser.newPage();
@@ -222,7 +223,12 @@ async function checkEnvironment(envName, url) {
         console.log(`⏳ 等待 ${position.name} 的頁面載入...`);
         await delay(3000);
 
-        await scrollToLoadImages(page);
+        if (position.scroll) {
+          console.log(`   📜 ${position.name} 需要滾動加載圖片`);
+          await scrollToLoadImages(page);
+        } else {
+          console.log(`   ⚡ ${position.name} 跳過滾動（優化速度）`);
+        }
 
         console.log(`   ⏳ 等待圖片完全加載...`);
         await delay(10000);
@@ -349,13 +355,23 @@ function gitPush() {
     for (let i = 1; i <= 3; i++) {
       try {
         console.log(`嘗試推送 (第 ${i} 次)...`);
-        runGit('git pull --rebase');
+
+        // 先嘗試 rebase，如果失敗則用 merge
+        try {
+          runGit('git pull --rebase');
+        } catch (rebaseErr) {
+          console.log('⚠️ Rebase 失敗，改用 merge 方式...');
+          runGit('git rebase --abort');  // 取消失敗的 rebase
+          runGit('git pull --no-rebase');  // 使用 merge
+        }
+
         runGit('git push');
         console.log('✅ 推送成功！');
         return;
       } catch (err) {
         if (i === 3) {
-          console.error('❌ 推送失敗');
+          console.error('❌ 推送失敗（已重試 3 次）');
+          console.error('錯誤詳情:', err.message);
           throw err;
         }
         console.log('推送失敗，等待 5 秒後重試...');
@@ -416,20 +432,23 @@ async function runAllChecks() {
   for (const result of results) {
     if (!result.environment) continue;
 
-    telegramMessage += `<b>${result.environment} 環境：</b>\n`;
-    if (result.success) {
-      telegramMessage += `📊 檢查了 ${result.totalCount} 張圖片\n`;
+    telegramMessage += `━━━━━━━━━━━━━━━━\n`;
+    telegramMessage += `<b>📍 ${result.environment} 環境</b>\n\n`;
+
+    // errorCount === -1 表示檢測失敗，>= 0 表示檢測成功
+    if (result.errorCount >= 0) {
+      telegramMessage += `📊 檢查圖片: ${result.totalCount} 張\n`;
       telegramMessage += `✅ 正常: ${result.successCount} 張\n`;
+
       if (result.errorCount === 0) {
-        telegramMessage += `✅ 所有圖片資源正常！\n`;
+        telegramMessage += `\n✨ 所有圖片資源正常！\n`;
       } else {
-        telegramMessage += `❌ 錯誤: ${result.errorCount} 張\n`;
-        result.errors.slice(0, 5).forEach((err, idx) => {
-          telegramMessage += `  ${idx + 1}. ${err.fileName}\n`;
+        telegramMessage += `❌ 錯誤: ${result.errorCount} 張\n\n`;
+        telegramMessage += `<b>⚠️ 錯誤圖片列表：</b>\n`;
+        result.errors.forEach((err, idx) => {
+          telegramMessage += `${idx + 1}. ${err.fileName}\n`;
+          telegramMessage += `   └ HTTP ${err.status}\n`;
         });
-        if (result.errorCount > 5) {
-          telegramMessage += `  ... 及其他 ${result.errorCount - 5} 張\n`;
-        }
       }
     } else {
       telegramMessage += `❌ 檢測失敗: ${result.error || '未知錯誤'}\n`;
