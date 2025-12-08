@@ -153,6 +153,7 @@ function gitPush() {
       const gitBashPaths = [
         'C:\\Program Files\\Git\\bin\\bash.exe',
         'C:\\Program Files (x86)\\Git\\bin\\bash.exe',
+        'C:\\Users\\dada.ho.REVO\\Desktop\\cmder\\vendor\\git-for-windows\\bin\\bash.exe',
       ];
 
       let gitBashFound = false;
