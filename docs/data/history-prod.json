@@ -2,6 +2,19 @@
   "checks": [
     {
       "environment": "PROD",
+      "timestamp": "2025-12-08T03:43:12.403Z",
+      "totalCount": 0,
+      "successCount": 0,
+      "errorCount": -1,
+      "successImages": [],
+      "errors": [],
+      "success": false,
+      "error": "Input.dispatchMouseEvent timed out. Increase the 'protocolTimeout' setting in launch/connect calls for a higher timeout if needed.",
+      "url": "http://gcih5.playacegame.com:81/forwardGame.do?params=oQyN8IZXIT3dNFnSSyK4KoGN+lkBlGUxqujrQxIVUyDQaVgYpFM6tmGHJDsBK344Mbp/wtZQ97vcoFECZm6/rLQAoAM1T43pvb2L39SenoiT+d+oYYnYellMc+cJ58nQNnGzGUeuFnt7oaAfMi7WbyyEsHRUCVtH8CgAOn2eJh/CFyuEsFW0z3OKuWZdRugSvqNbmnAcD/F26OTTKE3qS7BsigEWbfwXeF98MgOnC9AApCosTw5BP/ZRGvXn6SiRxbXvq+2l8XIMjGt4QQlZ1A==&key=cfc99b3ab3072937e843291e9c982647",
+      "source": "local"
+    },
+    {
+      "environment": "PROD",
       "timestamp": "2025-12-08T02:46:13.426Z",
       "totalCount": 100,
       "successCount": 93,
