@@ -552,6 +552,101 @@
         function displayLatestCheckDetails(latest) {
             const container = document.getElementById('latestCheckDetails');
 
+            // 檢查是否為多環境格式
+            if (latest.environments && Array.isArray(latest.environments)) {
+                // 多環境格式
+                if (latest.environments.length === 0) {
+                    container.innerHTML = `
+                        <div class="empty-state">
+                            <h3>暫無檢查數據</h3>
+                            <p>等待下次檢查...</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                let html = '';
+
+                // 為每個環境顯示詳情
+                latest.environments.forEach((env, index) => {
+                    const envBadge = env.environment === 'PROD' ? '🔴' : '🟡';
+                    const envColor = env.environment === 'PROD' ? '#ef4444' : '#f59e0b';
+
+                    html += `
+                        <div style="margin-bottom: 30px; padding: 15px; border-left: 4px solid ${envColor}; background: #f9fafb;">
+                            <h3 style="margin: 0 0 15px 0; color: ${envColor};">
+                                ${envBadge} ${env.environment} 環境
+                            </h3>
+                            <p style="margin-bottom: 15px; color: #666; font-size: 14px;">
+                                檢查時間: ${formatTime(env.timestamp)} |
+                                總共檢查: <strong>${env.totalCount}</strong> 個圖片 |
+                                正常: <strong style="color: #10b981;">${env.successCount}</strong> |
+                                異常: <strong style="color: #ef4444;">${env.errorCount}</strong>
+                            </p>
+                    `;
+
+                    // 顯示異常圖片（如果有）
+                    if (env.errors && env.errors.length > 0) {
+                        // 去重
+                        const uniqueErrors = [];
+                        const seenFileNames = new Set();
+                        env.errors.forEach(err => {
+                            if (!seenFileNames.has(err.fileName)) {
+                                seenFileNames.add(err.fileName);
+                                uniqueErrors.push(err);
+                            }
+                        });
+
+                        html += `
+                            <div class="image-group error">
+                                <h4 style="margin: 10px 0;">❌ 異常圖片 (${uniqueErrors.length} 個)</h4>
+                                <div class="image-list">
+                                    ${uniqueErrors.map(img => `
+                                        <div class="image-item error">
+                                            <div class="image-filename">📷 ${img.fileName}</div>
+                                            <div class="image-url">${img.url}</div>
+                                            <div style="margin-top: 5px; color: #ef4444; font-size: 12px;">
+                                                HTTP ${img.status}
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    // 顯示正常圖片（收合）
+                    if (env.successImages && env.successImages.length > 0) {
+                        const listId = `successList_${env.environment}`;
+                        html += `
+                            <div class="image-group success">
+                                <h4 style="margin: 10px 0;">✅ 正常圖片 (${env.successImages.length} 個)</h4>
+                                <button class="collapse-btn" onclick="toggleImageList('${listId}')">
+                                    展開/收合
+                                </button>
+                                <div class="image-list" id="${listId}" style="display: none;">
+                                    ${env.successImages.map(img => `
+                                        <div class="image-item success">
+                                            <div class="image-filename">📷 ${img.fileName}</div>
+                                            <div class="image-url">${img.url}</div>
+                                            <div style="margin-top: 5px; color: #10b981; font-size: 12px;">
+                                                HTTP ${img.status}
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+
+                    html += `</div>`;
+                });
+
+                container.innerHTML = html;
+                return;
+            }
+
+            // 舊格式（單環境）- 向後兼容
             if (!latest.totalCount || latest.totalCount === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -787,8 +882,30 @@
                 const latestResponse = await fetch('data/latest.json?' + Date.now());
                 const latest = await latestResponse.json();
 
+                // 判斷是否為多環境格式
+                let totalCount = 0;
+                let successCount = 0;
+                let errorCount = 0;
+                let hasErrors = false;
+
+                if (latest.environments && Array.isArray(latest.environments)) {
+                    // 多環境格式 - 匯總所有環境的數據
+                    latest.environments.forEach(env => {
+                        totalCount += env.totalCount || 0;
+                        successCount += env.successCount || 0;
+                        errorCount += env.errorCount >= 0 ? env.errorCount : 0;
+                        if (env.errorCount > 0) hasErrors = true;
+                    });
+                } else {
+                    // 單環境格式
+                    totalCount = latest.totalCount || 0;
+                    successCount = latest.successCount || 0;
+                    errorCount = latest.errorCount >= 0 ? latest.errorCount : 0;
+                    hasErrors = !latest.success || errorCount > 0;
+                }
+
                 // 更新狀態卡片
-                if (latest.success) {
+                if (!hasErrors && errorCount === 0) {
                     document.getElementById('status').textContent = '✅ 正常';
                     document.getElementById('status').style.color = '#10b981';
                 } else {
@@ -797,9 +914,9 @@
                 }
 
                 document.getElementById('lastCheck').textContent = relativeTime(latest.timestamp);
-                document.getElementById('totalImages').textContent = latest.totalCount || 0;
-                document.getElementById('successCount').textContent = latest.successCount || 0;
-                document.getElementById('errorCount').textContent = latest.errorCount >= 0 ? latest.errorCount : '錯誤';
+                document.getElementById('totalImages').textContent = totalCount;
+                document.getElementById('successCount').textContent = successCount;
+                document.getElementById('errorCount').textContent = errorCount;
 
                 // 顯示最新檢查詳情
                 displayLatestCheckDetails(latest);
