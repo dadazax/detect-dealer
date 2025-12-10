@@ -61,6 +61,7 @@ monitor-multi-env:
 # 部署 GitLab Pages
 pages:
   stage: deploy
+  needs: []  # 不等待其他 jobs，立即執行
   script:
     - mkdir -p public
     - cp -r docs/* public/
