@@ -1,0 +1,72 @@
+# GitLab CI/CD 配置 - 網站監控
+# 每 30 分鐘自動執行一次檢測
+
+stages:
+  - monitor
+  - deploy
+
+# 定時執行：每 30 分鐘檢測一次
+monitor-prod:
+  stage: monitor
+  image: node:18
+  before_script:
+    - apt-get update && apt-get install -y wget gnupg
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+    - apt-get update && apt-get install -y google-chrome-stable
+    - npm install
+    - git config --global user.email "gitlab-ci@etwlt.com"
+    - git config --global user.name "GitLab CI"
+  script:
+    - echo "開始 PROD 環境檢測"
+    - node run-prod-only.js
+  artifacts:
+    paths:
+      - docs/data/
+    expire_in: 30 days
+  rules:
+    # 定時任務：每 30 分鐘執行
+    - if: '$CI_PIPELINE_SOURCE == "schedule"'
+    # 手動觸發
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+    # 推送到 master 分支時執行
+    - if: '$CI_COMMIT_BRANCH == "master"'
+  allow_failure: false
+
+# 多環境檢測（可選）
+monitor-multi-env:
+  stage: monitor
+  image: node:18
+  before_script:
+    - apt-get update && apt-get install -y wget gnupg
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+    - echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+    - apt-get update && apt-get install -y google-chrome-stable
+    - npm install
+    - git config --global user.email "gitlab-ci@etwlt.com"
+    - git config --global user.name "GitLab CI"
+  script:
+    - echo "開始多環境檢測（UAT + PROD）"
+    - node run-multi-env.js
+  artifacts:
+    paths:
+      - docs/data/
+    expire_in: 30 days
+  rules:
+    # 僅手動觸發
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: manual
+  allow_failure: true
+
+# 部署 GitLab Pages
+pages:
+  stage: deploy
+  script:
+    - mkdir -p public
+    - cp -r docs/* public/
+  artifacts:
+    paths:
+      - public
+  rules:
+    # 推送到 master 分支時部署
+    - if: '$CI_COMMIT_BRANCH == "master"'
