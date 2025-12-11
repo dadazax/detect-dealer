@@ -18,5 +18,3 @@ pages:
   only:
     - main
     - master
-  tags:
-    - detect-dealer-runner
