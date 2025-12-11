@@ -1,6 +1,6 @@
 # GitLab CI/CD 配置 - 僅用於 Pages 部署
 # 監控任務在本地運行，CI/CD 只負責部署網頁
-# 使用 bash shell executor
+# 使用 PowerShell executor
 
 stages:
   - deploy
@@ -9,10 +9,10 @@ stages:
 pages:
   stage: deploy
   script:
-    - echo "正在準備 GitLab Pages..."
-    - mkdir -p public
-    - cp -r docs/* public/
-    - echo "✅ Pages 內容已準備完成"
+    - Write-Host "正在準備 GitLab Pages..."
+    - New-Item -ItemType Directory -Force -Path public | Out-Null
+    - Copy-Item -Path docs/* -Destination public/ -Recurse -Force
+    - Write-Host "Pages 內容已準備完成"
   artifacts:
     paths:
       - public
