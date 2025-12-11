@@ -9,10 +9,10 @@ stages:
 pages:
   stage: deploy
   script:
-    - Write-Host "正在準備 GitLab Pages..."
+    - Write-Host "Preparing GitLab Pages..."
     - New-Item -ItemType Directory -Force -Path public | Out-Null
     - Copy-Item -Path docs/* -Destination public/ -Recurse -Force
-    - Write-Host "Pages 內容已準備完成"
+    - Write-Host "Pages content ready"
   artifacts:
     paths:
       - public
