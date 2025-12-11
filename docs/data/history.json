@@ -1,6 +1,874 @@
 {
   "checks": [
     {
+      "timestamp": "2025-12-11T02:57:35.345Z",
+      "environment": "PROD",
+      "totalCount": 171,
+      "successCount": 171,
+      "errorCount": 0,
+      "successImages": [
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/index/chrome_btn.jpg",
+          "fileName": "chrome_btn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/index/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251114_pc_mt_loading_hans.jpg",
+          "fileName": "20251114_pc_mt_loading_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/loading_BG.c7084826.jpg",
+          "fileName": "loading_BG.c7084826.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/eventNoVideoBg.ae47569d.jpg",
+          "fileName": "eventNoVideoBg.ae47569d.jpg",
+          "status": 200
+        },
+        {
+          "url": "https://gc.ckrkg.com/pccdn/agingame/resource/PCPlaza/assets/rebrand_popup_bg.9bbd0361.jpg",
+          "fileName": "rebrand_popup_bg.9bbd0361.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251114_pc_mt_banner_hans.jpg",
+          "fileName": "20251114_pc_mt_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/resource/PCPlaza/assets/maintenance/bg.jpg",
+          "fileName": "bg.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Mikayla.jpg",
+          "fileName": "Mikayla.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Katarina.jpg",
+          "fileName": "Katarina.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Alfia.jpg",
+          "fileName": "Alfia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Mendy.jpg",
+          "fileName": "Mendy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Orpha.jpg",
+          "fileName": "Orpha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Norah.jpg",
+          "fileName": "Norah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251105_pc_pa6_hans.jpg",
+          "fileName": "20251105_pc_pa6_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/09122025_pc_topMaster_week1_1_hans.jpg",
+          "fileName": "09122025_pc_topMaster_week1_1_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251121_pc_banner_hans.jpg",
+          "fileName": "20251121_pc_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "fileName": "20251215_pc_yp_crash_shot_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/ad/20251204_pc_VG06_banner_hans.jpg",
+          "fileName": "20251204_pc_VG06_banner_hans.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Keira.jpg",
+          "fileName": "Keira.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Faye.jpg",
+          "fileName": "Faye.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Gaudrey.jpg",
+          "fileName": "Gaudrey.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Cinzia.jpg",
+          "fileName": "Cinzia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Minerva.jpg",
+          "fileName": "Minerva.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Ellis.jpg",
+          "fileName": "Ellis.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Linnie.jpg",
+          "fileName": "Linnie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Yiv.jpg",
+          "fileName": "Yiv.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Dhang.jpg",
+          "fileName": "Dhang.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Essie.jpg",
+          "fileName": "Essie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Saylo.jpg",
+          "fileName": "Saylo.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Elyse.jpg",
+          "fileName": "Elyse.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Saige.jpg",
+          "fileName": "Saige.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Mercy.jpg",
+          "fileName": "Mercy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Alaia.jpg",
+          "fileName": "Alaia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Kiyomi.jpg",
+          "fileName": "Kiyomi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Udaya.jpg",
+          "fileName": "Udaya.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Margaret.jpg",
+          "fileName": "Margaret.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Helen.jpg",
+          "fileName": "Helen.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Catrin.jpg",
+          "fileName": "Catrin.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Elsie.jpg",
+          "fileName": "Elsie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Wilma.jpg",
+          "fileName": "Wilma.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/CGY/Rapha.jpg",
+          "fileName": "Rapha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS5/Max.jpg",
+          "fileName": "Max.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Tracy.jpg",
+          "fileName": "Tracy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Deborah.jpg",
+          "fileName": "Deborah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS5/Dan.jpg",
+          "fileName": "Dan.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Leilani.jpg",
+          "fileName": "Leilani.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Anais.jpg",
+          "fileName": "Anais.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Novi.jpg",
+          "fileName": "Novi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Jaylah.jpg",
+          "fileName": "Jaylah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Britney.jpg",
+          "fileName": "Britney.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ailani.jpg",
+          "fileName": "Ailani.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Lucille.jpg",
+          "fileName": "Lucille.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Bryanna.jpg",
+          "fileName": "Bryanna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Glory.jpg",
+          "fileName": "Glory.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Bridget.jpg",
+          "fileName": "Bridget.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Sarai.jpg",
+          "fileName": "Sarai.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Ivy.jpg",
+          "fileName": "Ivy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Alessia.jpg",
+          "fileName": "Alessia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Izzy.jpg",
+          "fileName": "Izzy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Cyra.jpg",
+          "fileName": "Cyra.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Daisy.jpg",
+          "fileName": "Daisy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Jocelyn.jpg",
+          "fileName": "Jocelyn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Quinn.jpg",
+          "fileName": "Quinn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Abigail.jpg",
+          "fileName": "Abigail.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Halsey.jpg",
+          "fileName": "Halsey.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Melody.jpg",
+          "fileName": "Melody.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Aida.jpg",
+          "fileName": "Aida.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Billy.jpg",
+          "fileName": "Billy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Rimi.jpg",
+          "fileName": "Rimi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Thea.jpg",
+          "fileName": "Thea.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Selena.jpg",
+          "fileName": "Selena.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Aminata.jpg",
+          "fileName": "Aminata.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ora.jpg",
+          "fileName": "Ora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Aleena.jpg",
+          "fileName": "Aleena.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Arely.jpg",
+          "fileName": "Arely.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Crystal.jpg",
+          "fileName": "Crystal.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Lindsay.jpg",
+          "fileName": "Lindsay.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Dulce.jpg",
+          "fileName": "Dulce.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ingrid.jpg",
+          "fileName": "Ingrid.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Joanna.jpg",
+          "fileName": "Joanna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Hadassa.jpg",
+          "fileName": "Hadassa.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ayanna.jpg",
+          "fileName": "Ayanna.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Luciana.jpg",
+          "fileName": "Luciana.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Avital.jpg",
+          "fileName": "Avital.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Arianny.jpg",
+          "fileName": "Arianny.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Lhiora.jpg",
+          "fileName": "Lhiora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Aitana.jpg",
+          "fileName": "Aitana.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ariella.jpg",
+          "fileName": "Ariella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS6/Emerie.jpg",
+          "fileName": "Emerie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Addison.jpg",
+          "fileName": "Addison.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Menucha.jpg",
+          "fileName": "Menucha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Hilary.jpg",
+          "fileName": "Hilary.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Nova.jpg",
+          "fileName": "Nova.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Sia.jpg",
+          "fileName": "Sia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Debbie.jpg",
+          "fileName": "Debbie.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Meryl.jpg",
+          "fileName": "Meryl.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS5/Lydia.jpg",
+          "fileName": "Lydia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS5/Nikki.jpg",
+          "fileName": "Nikki.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Jasmina.jpg",
+          "fileName": "Jasmina.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Alou.jpg",
+          "fileName": "Alou.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS5/Remy.jpg",
+          "fileName": "Remy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Chavy.jpg",
+          "fileName": "Chavy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Kailee.jpg",
+          "fileName": "Kailee.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Mirell.jpg",
+          "fileName": "Mirell.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Aaliyah.jpg",
+          "fileName": "Aaliyah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Caitlin.jpg",
+          "fileName": "Caitlin.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Ananya.jpg",
+          "fileName": "Ananya.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Brynn.jpg",
+          "fileName": "Brynn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Cristina.jpg",
+          "fileName": "Cristina.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Brandy.jpg",
+          "fileName": "Brandy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Seraphin.jpg",
+          "fileName": "Seraphin.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Elora.jpg",
+          "fileName": "Elora.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Judi.jpg",
+          "fileName": "Judi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Ocean.jpg",
+          "fileName": "Ocean.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Capri.jpg",
+          "fileName": "Capri.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Georgia.jpg",
+          "fileName": "Georgia.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Beth.jpg",
+          "fileName": "Beth.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Arelis.jpg",
+          "fileName": "Arelis.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Melisa.jpg",
+          "fileName": "Melisa.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Briseida.jpg",
+          "fileName": "Briseida.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Tessa.jpg",
+          "fileName": "Tessa.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Hayoon.jpg",
+          "fileName": "Hayoon.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Izabella.jpg",
+          "fileName": "Izabella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Jhoanne.jpg",
+          "fileName": "Jhoanne.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Simonnette.jpg",
+          "fileName": "Simonnette.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Juno.jpg",
+          "fileName": "Juno.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Kailyn.jpg",
+          "fileName": "Kailyn.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Lulabella.jpg",
+          "fileName": "Lulabella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Elgita.jpg",
+          "fileName": "Elgita.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Anissa.jpg",
+          "fileName": "Anissa.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Liah.jpg",
+          "fileName": "Liah.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Orchid.jpg",
+          "fileName": "Orchid.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Vinicius.jpg",
+          "fileName": "Vinicius.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Ravello.jpg",
+          "fileName": "Ravello.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Carleigh.jpg",
+          "fileName": "Carleigh.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Ilon.jpg",
+          "fileName": "Ilon.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Meera.jpg",
+          "fileName": "Meera.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Hadi.jpg",
+          "fileName": "Hadi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Aaro.jpg",
+          "fileName": "Aaro.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Sibel.jpg",
+          "fileName": "Sibel.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Daniella.jpg",
+          "fileName": "Daniella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/P070.jpg",
+          "fileName": "P070.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Theodore.jpg",
+          "fileName": "Theodore.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS6/Thomas.jpg",
+          "fileName": "Thomas.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/P072.jpg",
+          "fileName": "P072.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Juliet.jpg",
+          "fileName": "Juliet.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/P071.jpg",
+          "fileName": "P071.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Eliana.jpg",
+          "fileName": "Eliana.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Judy.jpg",
+          "fileName": "Judy.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Maliha.jpg",
+          "fileName": "Maliha.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Jade.jpg",
+          "fileName": "Jade.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Miri.jpg",
+          "fileName": "Miri.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Hareem.jpg",
+          "fileName": "Hareem.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/PT/Anyi.jpg",
+          "fileName": "Anyi.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Mival.jpg",
+          "fileName": "Mival.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Frady.jpg",
+          "fileName": "Frady.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Chiara.jpg",
+          "fileName": "Chiara.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Janice.jpg",
+          "fileName": "Janice.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Miracle.jpg",
+          "fileName": "Miracle.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Helena.jpg",
+          "fileName": "Helena.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Bella.jpg",
+          "fileName": "Bella.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Ema.jpg",
+          "fileName": "Ema.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Jazmine.jpg",
+          "fileName": "Jazmine.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/EMA/Lisa.jpg",
+          "fileName": "Lisa.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/L5/Empress.jpg",
+          "fileName": "Empress.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/MS4/Pearl.jpg",
+          "fileName": "Pearl.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/LED/Emily.jpg",
+          "fileName": "Emily.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/LED/Zuri.jpg",
+          "fileName": "Zuri.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/LED/Pink.jpg",
+          "fileName": "Pink.jpg",
+          "status": 200
+        },
+        {
+          "url": "http://gcih5.playacegame.com:81/pc/pcv1/images/dealer/LED/Kayla.jpg",
+          "fileName": "Kayla.jpg",
+          "status": 200
+        }
+      ],
+      "errors": [],
+      "success": true,
+      "url": "http://gcih5.playacegame.com:81/forwardGame.do?params=oQyN8IZXIT3dNFnSSyK4KoGN+lkBlGUxqujrQxIVUyDQaVgYpFM6tmGHJDsBK344Mbp/wtZQ97vcoFECZm6/rLQAoAM1T43pvb2L39SenoiT+d+oYYnYellMc+cJ58nQNnGzGUeuFnt7oaAfMi7WbyyEsHRUCVtH8CgAOn2eJh/CFyuEsFW0z3OKuWZdRugSvqNbmnAcD/F26OTTKE3qS7BsigEWbfwXeF98MgOnC9AApCosTw5BP/ZRGvXn6SiRxbXvq+2l8XIMjGt4QQlZ1A==&key=cfc99b3ab3072937e843291e9c982647",
+      "source": "local"
+    },
+    {
       "timestamp": "2025-12-11T02:04:43.772Z",
       "environment": "PROD",
       "totalCount": 0,
