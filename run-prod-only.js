@@ -221,29 +221,61 @@ function gitPush() {
     const timestamp = new Date().toLocaleString('zh-TW');
     runGit(`git commit -m "PROD 環境檢測結果 - ${timestamp}"`);
 
-    // 推送（最多重試 3 次）
+    // 推送到 GitLab（最多重試 3 次）
     for (let i = 1; i <= 3; i++) {
       try {
-        console.log(`嘗試推送 (第 ${i} 次)...`);
+        console.log(`嘗試推送到 GitLab (第 ${i} 次)...`);
 
         // 先嘗試 rebase，如果失敗則用 merge
         try {
-          runGit('git pull --rebase');
+          runGit('git pull origin main:master --rebase');
         } catch (rebaseErr) {
           console.log('⚠️ Rebase 失敗，改用 merge 方式...');
           runGit('git rebase --abort');
-          runGit('git pull --no-rebase');
+          runGit('git pull origin main:master --no-rebase');
         }
 
-        runGit('git push');
-        console.log('✅ 推送成功！');
+        runGit('git push origin main:master');
+        console.log('✅ GitLab 推送成功！');
+        break;
+      } catch (err) {
+        if (i === 3) {
+          console.error('❌ GitLab 推送失敗');
+          throw err;
+        }
+        console.log('GitLab 推送失敗，等待 5 秒後重試...');
+        const start = Date.now();
+        while (Date.now() - start < 5000) {}
+      }
+    }
+
+    // 推送到 GitHub（用於 Pages）
+    for (let i = 1; i <= 3; i++) {
+      try {
+        console.log(`嘗試推送到 GitHub (第 ${i} 次)...`);
+
+        // 先拉取 GitHub 的更新
+        try {
+          runGit('git pull github main --rebase');
+        } catch (pullErr) {
+          console.log('⚠️ GitHub pull 失敗，可能是首次推送或沒有衝突');
+          try {
+            runGit('git rebase --abort');
+          } catch (e) {
+            // ignore
+          }
+        }
+
+        runGit('git push github main');
+        console.log('✅ GitHub 推送成功！');
         return;
       } catch (err) {
         if (i === 3) {
-          console.error('❌ 推送失敗');
-          throw err;
+          console.error('❌ GitHub 推送失敗（不影響主要功能）');
+          console.error(err.message);
+          return; // 不拋出錯誤，因為 GitHub 是次要的
         }
-        console.log('推送失敗，等待 5 秒後重試...');
+        console.log('GitHub 推送失敗，等待 5 秒後重試...');
         const start = Date.now();
         while (Date.now() - start < 5000) {}
       }
