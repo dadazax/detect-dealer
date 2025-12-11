@@ -1,0 +1,22 @@
+# GitLab CI/CD 配置 - 僅用於 Pages 部署
+# 監控任務在本地運行，CI/CD 只負責部署網頁
+
+stages:
+  - deploy
+
+# GitLab Pages 部署
+pages:
+  stage: deploy
+  script:
+    - echo "正在準備 GitLab Pages..."
+    - mkdir -p public
+    - cp -r docs/* public/
+    - echo "✅ Pages 內容已準備完成"
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+    - master
+  tags:
+    - detect-dealer-runner
