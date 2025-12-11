@@ -1,5 +1,6 @@
 # GitLab CI/CD 配置 - 僅用於 Pages 部署
 # 監控任務在本地運行，CI/CD 只負責部署網頁
+# Git 已添加到系統 PATH，Runner 可以正常執行
 
 stages:
   - deploy
