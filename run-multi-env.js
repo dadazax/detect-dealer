@@ -160,7 +160,7 @@ async function checkEnvironment(envName, url) {
       '--disable-setuid-sandbox',
       '--window-size=1920,1080',
     ],
-    protocolTimeout: 180000,  // 增加協議超時時間至 180 秒
+    protocolTimeout: 300000,  // 增加協議超時時間至 300 秒 (5 分鐘)
   });
 
   const page = await browser.newPage();

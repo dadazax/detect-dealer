@@ -297,7 +297,7 @@ async function runCheck() {
       '--disable-setuid-sandbox',
       '--window-size=1920,1080',
     ],
-    protocolTimeout: 180000,  // 增加協議超時至 180 秒
+    protocolTimeout: 300000,  // 增加協議超時至 300 秒 (5 分鐘)
   });
 
   const page = await browser.newPage();
